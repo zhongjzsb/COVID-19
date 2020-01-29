@@ -94,9 +94,3 @@ jhu_china_polygon_animate <- animate(
 anim_save("./figures/jhu_china_polygon_animate.gif", jhu_china_polygon_animate)
 
 
-# Ref: 
-# [1] http://boazsobrado.com/blog/2019/01/13/where-i-was-in-2018/
-# [2] https://stackoverflow.com/questions/48288183/changing-ggplot-geom-sf-choropleth-fill-colors
-# [3] https://github.com/globalcitizen/2019-wuhan-coronavirus-data/
-# [4] https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
-# [5] https://simplemaps.com/data/cn-cities
