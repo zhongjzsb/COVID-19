@@ -1,0 +1,304 @@
+Date,Country/Region,Province/State,Confirmed,Deaths,Recovered,Suspected
+2020-01-22,China,Anhui,0,0,0,3
+2020-01-22,China,Beijing,10,0,0,0
+2020-01-22,China,Chongqing,5,0,0,0
+2020-01-22,China,Guangdong,17,0,0,4
+2020-01-22,China,Guangxi,0,0,0,1
+2020-01-22,China,Guizhou,0,0,0,1
+2020-01-22,China,Hainan,0,0,0,1
+2020-01-22,China,Heilongjiang,0,0,0,1
+2020-01-22,China,Henan,1,0,0,0
+2020-01-22,China,Hong Kong,0,0,0,117
+2020-01-22,China,Hubei,270,0,0,11
+2020-01-22,China,Hunan,1,0,0,0
+2020-01-22,China,Jiangxi,2,0,0,0
+2020-01-22,China,Jilin,0,0,0,1
+2020-01-22,China,Liaoning,0,0,0,1
+2020-01-22,China,Ningxia,0,0,0,1
+2020-01-22,China,Shandong,1,0,0,0
+2020-01-22,China,Shanghai,9,0,0,10
+2020-01-22,China,Sichuan,2,0,0,1
+2020-01-22,China,Taiwan,1,0,0,0
+2020-01-22,China,Tianjin,2,0,0,0
+2020-01-22,China,Yunnan,1,0,0,0
+2020-01-22,China,Zhejiang,5,0,0,16
+2020-01-22,Japan,,1,0,0,0
+2020-01-22,South Korea,,1,0,0,0
+2020-01-22,Thailand,,2,0,0,0
+2020-01-22,United States,Washington,1,0,0,0
+2020-01-23,China,Anhui,1,0,0,4
+2020-01-23,China,Beijing,14,0,0,0
+2020-01-23,China,Chongqing,6,0,0,0
+2020-01-23,China,Fujian,1,0,0,0
+2020-01-23,China,Gansu,0,0,0,0
+2020-01-23,China,Guangdong,26,0,0,1
+2020-01-23,China,Guangxi,2,0,0,1
+2020-01-23,China,Guizhou,1,0,0,0
+2020-01-23,China,Hainan,4,0,0,0
+2020-01-23,China,Hebei,1,0,0,0
+2020-01-23,China,Heilongjiang,0,0,0,1
+2020-01-23,China,Henan,5,0,0,0
+2020-01-23,China,Hong Kong,0,0,0,117
+2020-01-23,China,Hubei,444,0,0,0
+2020-01-23,China,Hunan,4,0,0,0
+2020-01-23,China,Inner Mongolia,0,0,0,0
+2020-01-23,China,Jiangsu,1,0,0,0
+2020-01-23,China,Jiangxi,2,0,0,0
+2020-01-23,China,Jilin,0,0,0,1
+2020-01-23,China,Liaoning,2,0,0,0
+2020-01-23,China,Macau,1,0,0,0
+2020-01-23,China,Ningxia,1,0,0,0
+2020-01-23,China,Qinghai,0,0,0,0
+2020-01-23,China,Shaanxi,0,0,0,0
+2020-01-23,China,Shandong,2,0,0,0
+2020-01-23,China,Shanghai,9,0,0,10
+2020-01-23,China,Shanxi,1,0,0,0
+2020-01-23,China,Sichuan,5,0,0,2
+2020-01-23,China,Taiwan,1,0,0,0
+2020-01-23,China,Tianjin,4,0,0,0
+2020-01-23,China,Tibet,0,0,0,0
+2020-01-23,China,Xinjiang,0,0,0,0
+2020-01-23,China,Yunnan,1,0,0,0
+2020-01-23,China,Zhejiang,10,0,0,0
+2020-01-23,Japan,,2,0,0,0
+2020-01-23,South Korea,,1,0,0,0
+2020-01-23,Thailand,,2,0,0,0
+2020-01-23,United States,Washington,1,0,0,0
+2020-01-24,Australia,,0,0,0,1
+2020-01-24,Brazil,,0,0,0,1
+2020-01-24,China,Anhui,15,0,0,4
+2020-01-24,China,Beijing,26,0,0,22
+2020-01-24,China,Chongqing,27,0,0,13
+2020-01-24,China,Fujian,5,0,0,2
+2020-01-24,China,Gansu,2,0,0,0
+2020-01-24,China,Guangdong,53,0,2,1
+2020-01-24,China,Guangxi,13,0,0,0
+2020-01-24,China,Guizhou,3,0,0,0
+2020-01-24,China,Hainan,8,0,0,32
+2020-01-24,China,Hebei,2,1,0,0
+2020-01-24,China,Heilongjiang,4,1,0,0
+2020-01-24,China,Henan,9,0,0,0
+2020-01-24,China,Hong Kong,2,0,0,65
+2020-01-24,China,Hubei,549,24,31,0
+2020-01-24,China,Hunan,24,0,0,0
+2020-01-24,China,Inner Mongolia,1,0,0,2
+2020-01-24,China,Jiangsu,9,0,0,0
+2020-01-24,China,Jiangxi,7,0,0,0
+2020-01-24,China,Jilin,3,0,0,0
+2020-01-24,China,Liaoning,4,0,0,0
+2020-01-24,China,Macau,2,0,0,0
+2020-01-24,China,Ningxia,1,0,0,0
+2020-01-24,China,Qinghai,0,0,0,0
+2020-01-24,China,Shaanxi,3,0,0,1
+2020-01-24,China,Shandong,9,0,0,2
+2020-01-24,China,Shanghai,20,0,0,22
+2020-01-24,China,Shanxi,1,0,0,0
+2020-01-24,China,Sichuan,15,0,0,4
+2020-01-24,China,Taiwan,1,0,0,0
+2020-01-24,China,Tianjin,5,0,0,0
+2020-01-24,China,Tibet,0,0,0,0
+2020-01-24,China,Xinjiang,2,0,0,0
+2020-01-24,China,Yunnan,2,0,0,0
+2020-01-24,China,Zhejiang,43,0,1,0
+2020-01-24,Colombia,,0,0,0,1
+2020-01-24,Japan,,2,0,0,0
+2020-01-24,Malaysia,,0,0,0,4
+2020-01-24,Mexico,,0,0,0,1
+2020-01-24,Philippines,,0,0,0,4
+2020-01-24,Singapore,,1,0,0,0
+2020-01-24,South Korea,,1,0,0,0
+2020-01-24,Thailand,,4,0,0,0
+2020-01-24,United States,Washington,1,0,0,0
+2020-01-24,Vietnam,,2,0,0,0
+2020-01-25,Australia,,4,0,0,0
+2020-01-25,China,Anhui,39,0,0,4
+2020-01-25,China,Beijing,41,0,2,0
+2020-01-25,China,Chongqing,57,0,0,13
+2020-01-25,China,Fujian,18,0,0,20
+2020-01-25,China,Gansu,4,0,0,0
+2020-01-25,China,Guangdong,78,0,2,0
+2020-01-25,China,Guangxi,23,0,0,0
+2020-01-25,China,Guizhou,4,0,0,0
+2020-01-25,China,Hainan,19,0,0,32
+2020-01-25,China,Hebei,8,1,0,0
+2020-01-25,China,Heilongjiang,9,1,0,0
+2020-01-25,China,Henan,32,0,0,42
+2020-01-25,China,Hong Kong,5,0,0,244
+2020-01-25,China,Hubei,761,40,32,0
+2020-01-25,China,Hunan,43,0,0,0
+2020-01-25,China,Inner Mongolia,7,0,0,2
+2020-01-25,China,Jiangsu,18,0,1,0
+2020-01-25,China,Jiangxi,18,0,0,0
+2020-01-25,China,Jilin,4,0,0,0
+2020-01-25,China,Liaoning,17,0,0,0
+2020-01-25,China,Macau,2,0,0,0
+2020-01-25,China,Ningxia,3,0,0,1
+2020-01-25,China,Qinghai,1,0,0,1
+2020-01-25,China,Shaanxi,15,0,0,0
+2020-01-25,China,Shandong,27,0,0,0
+2020-01-25,China,Shanghai,33,0,1,72
+2020-01-25,China,Shanxi,6,0,0,0
+2020-01-25,China,Sichuan,28,0,0,4
+2020-01-25,China,Taiwan,3,0,0,0
+2020-01-25,China,Tianjin,10,0,0,0
+2020-01-25,China,Xinjiang,3,0,0,0
+2020-01-25,China,Yunnan,11,0,0,58
+2020-01-25,China,Zhejiang,62,0,1,0
+2020-01-25,France,,3,0,0,0
+2020-01-25,Japan,,2,0,0,0
+2020-01-25,Malaysia,,3,0,0,0
+2020-01-25,Nepal,,1,0,0,0
+2020-01-25,Singapore,,3,0,0,0
+2020-01-25,South Korea,,2,0,0,0
+2020-01-25,Thailand,,7,0,0,0
+2020-01-25,United States,Chicago,1,0,0,0
+2020-01-25,United States,Illinois,1,0,0,0
+2020-01-25,United States,Washington,1,0,0,0
+2020-01-25,Vietnam,,2,0,0,0
+2020-01-26,Australia,,4,0,0,0
+2020-01-26,Canada,Ontario,1,0,0,0
+2020-01-26,China,Anhui,60,0,0,4
+2020-01-26,China,Beijing,68,0,2,0
+2020-01-26,China,Chongqing,75,0,0,0
+2020-01-26,China,Fujian,35,1,0,20
+2020-01-26,China,Gansu,7,0,0,0
+2020-01-26,China,Guangdong,111,0,2,0
+2020-01-26,China,Guangxi,36,0,0,0
+2020-01-26,China,Guizhou,5,0,0,0
+2020-01-26,China,Hainan,22,0,0,0
+2020-01-26,China,Hebei,13,1,0,0
+2020-01-26,China,Heilongjiang,15,1,0,0
+2020-01-26,China,Henan,83,1,0,3
+2020-01-26,China,Hong Kong,8,0,0,244
+2020-01-26,China,Hubei,1058,52,42,0
+2020-01-26,China,Hunan,69,0,0,0
+2020-01-26,China,Inner Mongolia,7,0,0,0
+2020-01-26,China,Jiangsu,33,0,1,0
+2020-01-26,China,Jiangxi,36,0,0,0
+2020-01-26,China,Jilin,4,0,0,0
+2020-01-26,China,Liaoning,21,0,0,0
+2020-01-26,China,Macau,5,0,0,0
+2020-01-26,China,Ningxia,4,0,0,1
+2020-01-26,China,Qinghai,1,0,0,0
+2020-01-26,China,Shaanxi,22,0,0,0
+2020-01-26,China,Shandong,46,0,0,0
+2020-01-26,China,Shanghai,40,1,1,72
+2020-01-26,China,Shanxi,9,0,0,0
+2020-01-26,China,Sichuan,44,0,0,4
+2020-01-26,China,Taiwan,4,0,0,0
+2020-01-26,China,Tianjin,14,0,0,0
+2020-01-26,China,Xinjiang,4,0,0,0
+2020-01-26,China,Yunnan,16,0,0,58
+2020-01-26,China,Zhejiang,104,0,1,0
+2020-01-26,France,,3,0,0,0
+2020-01-26,Japan,,4,0,1,0
+2020-01-26,Malaysia,,4,0,0,0
+2020-01-26,Nepal,,1,0,0,0
+2020-01-26,Singapore,,4,0,0,0
+2020-01-26,South Korea,,3,0,0,0
+2020-01-26,Thailand,,8,0,2,0
+2020-01-26,United States,California,1,0,0,0
+2020-01-26,United States,Illinois,1,0,0,0
+2020-01-26,United States,Washington,1,0,0,0
+2020-01-26,Vietnam,,2,0,0,0
+2020-01-27,Australia,,5,0,0,0
+2020-01-27,Cambodia,,1,0,0,0
+2020-01-27,Canada,Ontario,1,0,0,0
+2020-01-27,China,Anhui,70,0,0,0
+2020-01-27,China,Beijing,72,0,2,0
+2020-01-27,China,Chongqing,110,1,0,0
+2020-01-27,China,Fujian,56,0,0,0
+2020-01-27,China,Gansu,14,0,0,0
+2020-01-27,China,Guangdong,151,0,3,0
+2020-01-27,China,Guangxi,46,0,0,0
+2020-01-27,China,Guizhou,7,0,0,0
+2020-01-27,China,Hainan,33,1,0,0
+2020-01-27,China,Hebei,18,1,0,0
+2020-01-27,China,Heilongjiang,21,1,0,0
+2020-01-27,China,Henan,128,1,0,0
+2020-01-27,China,Hong Kong,8,0,0,0
+2020-01-27,China,Hubei,1423,76,45,0
+2020-01-27,China,Hunan,100,0,0,0
+2020-01-27,China,Inner Mongolia,11,0,0,0
+2020-01-27,China,Jiangsu,47,0,1,0
+2020-01-27,China,Jiangxi,48,0,1,0
+2020-01-27,China,Jilin,6,0,0,0
+2020-01-27,China,Liaoning,27,0,0,0
+2020-01-27,China,Macau,6,0,0,0
+2020-01-27,China,Ningxia,7,0,0,0
+2020-01-27,China,Qinghai,4,0,0,0
+2020-01-27,China,Shaanxi,35,0,0,0
+2020-01-27,China,Shandong,75,0,0,0
+2020-01-27,China,Shanghai,53,1,3,0
+2020-01-27,China,Shanxi,13,0,0,0
+2020-01-27,China,Sichuan,69,0,0,0
+2020-01-27,China,Taiwan,5,0,0,0
+2020-01-27,China,Tianjin,22,0,0,0
+2020-01-27,China,Xinjiang,5,0,0,0
+2020-01-27,China,Yunnan,26,0,0,0
+2020-01-27,China,Zhejiang,128,0,1,0
+2020-01-27,France,,3,0,0,0
+2020-01-27,Japan,,4,0,1,0
+2020-01-27,Malaysia,,4,0,0,0
+2020-01-27,Nepal,,1,0,0,0
+2020-01-27,Singapore,,4,0,0,0
+2020-01-27,South Korea,,4,0,0,0
+2020-01-27,Thailand,,8,0,2,0
+2020-01-27,United States,Arizona,1,0,0,0
+2020-01-27,United States,California,2,0,0,0
+2020-01-27,United States,Illinois,1,0,0,0
+2020-01-27,United States,Washington,1,0,0,0
+2020-01-27,Vietnam,,2,0,0,0
+2020-01-28,Australia,New South Wales,4,0,0,0
+2020-01-28,Australia,Victoria,1,0,0,0
+2020-01-28,Cambodia,,1,0,0,0
+2020-01-28,Canada,British Columbia,1,0,0,0
+2020-01-28,Canada,Ontario,2,0,0,0
+2020-01-28,China,Anhui,106,0,0,0
+2020-01-28,China,Beijing,91,1,4,0
+2020-01-28,China,Chongqing,132,0,0,0
+2020-01-28,China,Fujian,80,0,0,0
+2020-01-28,China,Gansu,19,0,0,0
+2020-01-28,China,Guangdong,207,0,4,0
+2020-01-28,China,Guangxi,51,0,2,0
+2020-01-28,China,Guizhou,9,0,0,0
+2020-01-28,China,Hainan,40,1,0,0
+2020-01-28,China,Hebei,33,1,0,0
+2020-01-28,China,Heilongjiang,33,1,0,0
+2020-01-28,China,Henan,168,1,0,0
+2020-01-28,China,Hong Kong,8,0,0,0
+2020-01-28,China,Hubei,3554,125,80,0
+2020-01-28,China,Hunan,143,0,0,0
+2020-01-28,China,Inner Mongolia,15,0,0,0
+2020-01-28,China,Jiangsu,70,0,1,0
+2020-01-28,China,Jiangxi,109,0,3,0
+2020-01-28,China,Jilin,8,0,0,0
+2020-01-28,China,Liaoning,34,0,0,0
+2020-01-28,China,Macau,7,0,0,0
+2020-01-28,China,Ningxia,11,0,0,0
+2020-01-28,China,Qinghai,6,0,0,0
+2020-01-28,China,Shaanxi,46,0,0,0
+2020-01-28,China,Shandong,95,1,0,0
+2020-01-28,China,Shanghai,66,1,4,0
+2020-01-28,China,Shanxi,27,0,0,0
+2020-01-28,China,Sichuan,90,0,0,0
+2020-01-28,China,Taiwan,8,0,0,0
+2020-01-28,China,Tianjin,24,0,0,0
+2020-01-28,China,Xinjiang,10,0,0,0
+2020-01-28,China,Yunnan,44,0,0,0
+2020-01-28,China,Zhejiang,173,0,3,0
+2020-01-28,France,,4,0,0,0
+2020-01-28,Germany,Bavaria,4,0,0,0
+2020-01-28,Ivory Coast,,1,0,0,0
+2020-01-28,Japan,,7,0,1,0
+2020-01-28,Malaysia,,4,0,0,0
+2020-01-28,Nepal,,1,0,0,0
+2020-01-28,Singapore,,7,0,0,0
+2020-01-28,South Korea,,4,0,0,0
+2020-01-28,Sri Lanka,,1,0,0,0
+2020-01-28,Thailand,,14,0,5,0
+2020-01-28,United States,Arizona,1,0,0,0
+2020-01-28,United States,California,2,0,0,0
+2020-01-28,United States,Illinois,1,0,0,0
+2020-01-28,United States,Washington,1,0,0,0
+2020-01-28,Vietnam,,2,0,0,0
