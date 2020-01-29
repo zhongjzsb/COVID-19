@@ -74,14 +74,20 @@ for (i_date in unique(jhu_daily_data_china$Date)){
 china_map_polygon <- do.call("rbind", china_map_polygon_list)
 
 jhu_china_polygon <- ggplot() +
-    geom_sf(aes(fill=log(Confirmed + 1)), data = china_map_polygon) + 
-    scale_fill_gradient2(low = "white", high = "red") + 
+    geom_sf(aes(fill=Confirmed + 1), data = china_map_polygon) + 
+    scale_fill_gradient2(
+        low = "white", 
+        high = "red", 
+        trans = "log10", 
+        breaks = c(1,10,100,1000), 
+        labels = c(1,10,100,1000)) + 
     # scale_fill_gradientn(colors = terrain.colors(20)) + 
     transition_time(Date) +
     theme(
         plot.title=element_text(size = 40, face = "bold"),
-        legend.title=element_text(size = 30), 
-        legend.text=element_text(size = 30)) +
+        legend.title=element_text(size = 20), 
+        legend.text=element_text(size = 20),
+        ) +
     labs(title = 'Day: {frame_time}', fill = 'Confirmed')
 jhu_china_polygon_animate <- animate(
     jhu_china_polygon, 
