@@ -77,7 +77,9 @@ jhu_china_polygon <- ggplot() +
     geom_sf(aes(fill=Confirmed + 1), data = china_map_polygon) + 
     scale_fill_gradient2(
         low = "white", 
-        high = "red", 
+        mid = "red",
+        high = "black",
+        midpoint = 2,
         trans = "log10", 
         breaks = c(1,10,100,1000), 
         labels = c(1,10,100,1000)) + 
