@@ -4,15 +4,15 @@ Visualizing and modeling the 2019-nCoV is the main objective here. The data are 
 
 As I don't know anything about javascript, so I'm trying to use R to implement this idea. So the initial idea was to create an animated map with dots.
 
-![FirstAnimate](./figures/jhu_animate_china.gif)
+![jhu_animate_china](./figures/jhu_animate_china.gif)
+
+![jhu_animate_world](./figures/jhu_animate_world.gif)
 
 
 Then I come into this [github](https://github.com/globalcitizen/2019-wuhan-coronavirus-data/) and created similar plot within R.
-![SecondAnimate](./figures/jhu_china_polygon_animate.gif)
 
-Here is the world map
+![jhu_china_polygon_animate](./figures/jhu_china_polygon_animate.gif)
 
-![ThirdAnimate](./figures/jhu_animate_world.gif)
 
 ## Todo:
 
