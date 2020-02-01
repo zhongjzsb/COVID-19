@@ -139,16 +139,12 @@ jhu_daily_data_world[, Confirmed_Group := (cut(
     breaks = c(0, 3, 10, 100, 1000), 
     labels = c('(0, 3)', '(3, 10)', '(10, 100)', '(100, Inf)')
 ))]
-jhu_daily_data_world[, Confirmed_Value := as.numeric(cut(
-    Confirmed, 
-    breaks = c(0, 3, 10, 100, 1000), 
-    labels = c(5:8)
-))]
+jhu_daily_data_world[, Confirmed_Value := as.numeric(Confirmed_Group)]
 jhu_daily_data_world <- jhu_daily_data_world[!is.na(Confirmed_Group)]
 
 # colSums(is.na(jhu_daily_data_world))
 # jhu_daily_data_world[is.na(city)]
-jhu_daily_data_world[country=='Ivory Coast']
+# jhu_daily_data_world[country=='Ivory Coast']
 
 world_map_dt = data.frame(regionNames("world"),
                           value=c(1:length(regionNames("world"))))
@@ -161,13 +157,14 @@ jhu_world_ggplot <- ggplot(data = world_map_sf) +
                color='red', alpha = .5
     ) +
     scale_size_continuous(
+        name = "Confirmed",
         range = c(5, 12), 
-        breaks = c(5:8), 
+        breaks = c(1:4), 
         labels = c('(0, 3)', '(3, 10)', '(10, 100)', '(100, Inf)')) + 
     theme(
         plot.title=element_text(size = 40, face = "bold"),
-        legend.title=element_text(size = 10), 
-        legend.text=element_text(size = 10),
+        legend.title=element_text(size = 30),
+        legend.text=element_text(size = 30),
         legend.position = 'right') + 
     transition_time(Date) +
     labs(title = 'Day: {frame_time}')
