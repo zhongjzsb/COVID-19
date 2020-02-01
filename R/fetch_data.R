@@ -46,6 +46,8 @@ for (i_name in jhu_sheetnames) {
 
 jhu_data <- rbindlist(jhu_data_list, fill = TRUE)
 head(jhu_data)
+
+# fix some data issues.
 jhu_data[, Date:=as.Date(DateTime)]
 jhu_data[is.na(Confirmed), Confirmed:=0]
 jhu_data[is.na(Deaths), Deaths:=0]
@@ -54,6 +56,8 @@ jhu_data[is.na(Suspected), Suspected:=0]
 jhu_data[`Country/Region`=='Mainland China', `Country/Region`:='China']
 jhu_data[`Province/State` %in% c('Hong Kong', 'Macau', 'Taiwan'), `Country/Region`:='China']
 jhu_data[`Country/Region`=='US', `Country/Region`:='United States']
+jhu_data[`Province/State`=='Chicago', `Province/State`:='Illinois']
+
 jhu_data[, .(.N),`Country/Region`]
 jhu_data[, lapply(.SD, sum), c('Date', 'Country/Region'), .SDcols=c('Confirmed', 'Deaths', 'Recovered', 'Suspected')]
 
@@ -63,6 +67,5 @@ setorder(jhu_data, Date, `Country/Region`, `Province/State`)
 jhu_daily_data <- jhu_data[, lapply(.SD, max), by=c('Date', 'Country/Region', 'Province/State'),.SDcols=c('Confirmed', 'Deaths', 'Recovered', 'Suspected')]
 
 fwrite(jhu_daily_data, './data/jhu_daily_data.csv')
-
 
 # Ref: [1] http://boazsobrado.com/blog/2019/01/13/where-i-was-in-2018/

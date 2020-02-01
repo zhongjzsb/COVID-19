@@ -151,7 +151,6 @@ Date,Country/Region,Province/State,Confirmed,Deaths,Recovered,Suspected
 2020-01-25,Singapore,,3,0,0,0
 2020-01-25,South Korea,,2,0,0,0
 2020-01-25,Thailand,,7,0,0,0
-2020-01-25,United States,Chicago,1,0,0,0
 2020-01-25,United States,Illinois,1,0,0,0
 2020-01-25,United States,Washington,1,0,0,0
 2020-01-25,Vietnam,,2,0,0,0
@@ -414,3 +413,128 @@ Date,Country/Region,Province/State,Confirmed,Deaths,Recovered,Suspected
 2020-01-30,United States,Illinois,1,0,0,0
 2020-01-30,United States,Washington,1,0,0,0
 2020-01-30,Vietnam,,2,0,0,0
+2020-01-31,Australia,New South Wales,4,0,2,0
+2020-01-31,Australia,Queensland,3,0,0,0
+2020-01-31,Australia,Victoria,3,0,0,0
+2020-01-31,Cambodia,,1,0,0,0
+2020-01-31,Canada,British Columbia,1,0,0,0
+2020-01-31,Canada,Ontario,2,0,0,0
+2020-01-31,China,Anhui,237,0,3,0
+2020-01-31,China,Beijing,139,1,5,0
+2020-01-31,China,Chongqing,211,0,1,0
+2020-01-31,China,Fujian,120,0,0,0
+2020-01-31,China,Gansu,29,0,0,0
+2020-01-31,China,Guangdong,436,0,11,0
+2020-01-31,China,Guangxi,87,0,2,0
+2020-01-31,China,Guizhou,29,0,2,0
+2020-01-31,China,Hainan,52,1,1,0
+2020-01-31,China,Hebei,82,1,0,0
+2020-01-31,China,Heilongjiang,59,2,0,0
+2020-01-31,China,Henan,352,2,3,0
+2020-01-31,China,Hong Kong,12,0,0,0
+2020-01-31,China,Hubei,5806,204,141,0
+2020-01-31,China,Hunan,332,0,2,0
+2020-01-31,China,Inner Mongolia,20,0,1,0
+2020-01-31,China,Jiangsu,168,0,5,0
+2020-01-31,China,Jiangxi,240,0,7,0
+2020-01-31,China,Jilin,14,0,1,0
+2020-01-31,China,Liaoning,48,0,1,0
+2020-01-31,China,Macau,7,0,0,0
+2020-01-31,China,Ningxia,21,0,1,0
+2020-01-31,China,Qinghai,8,0,0,0
+2020-01-31,China,Shaanxi,87,0,0,0
+2020-01-31,China,Shandong,184,0,2,0
+2020-01-31,China,Shanghai,135,1,9,0
+2020-01-31,China,Shanxi,39,0,1,0
+2020-01-31,China,Sichuan,177,1,1,0
+2020-01-31,China,Taiwan,10,0,0,0
+2020-01-31,China,Tianjin,32,0,0,0
+2020-01-31,China,Tibet,1,0,0,0
+2020-01-31,China,Xinjiang,17,0,0,0
+2020-01-31,China,Yunnan,83,0,1,0
+2020-01-31,China,Zhejiang,538,0,14,0
+2020-01-31,Finland,,1,0,0,0
+2020-01-31,France,,5,0,0,0
+2020-01-31,Germany,Bavaria,5,0,0,0
+2020-01-31,India,,1,0,0,0
+2020-01-31,Italy,,2,0,0,0
+2020-01-31,Japan,,15,0,1,0
+2020-01-31,Malaysia,,8,0,0,0
+2020-01-31,Nepal,,1,0,0,0
+2020-01-31,Philippines,,1,0,0,0
+2020-01-31,Russia,,2,0,0,0
+2020-01-31,Singapore,,13,0,0,0
+2020-01-31,South Korea,,11,0,0,0
+2020-01-31,Sri Lanka,,1,0,0,0
+2020-01-31,Sweden,,1,0,0,0
+2020-01-31,Thailand,,19,0,5,0
+2020-01-31,UK,,2,0,0,0
+2020-01-31,United Arab Emirates,,4,0,0,0
+2020-01-31,United States,Arizona,1,0,0,0
+2020-01-31,United States,California,3,0,0,0
+2020-01-31,United States,Illinois,2,0,0,0
+2020-01-31,United States,Washington,1,0,0,0
+2020-01-31,Vietnam,,2,0,0,0
+2020-02-01,Australia,New South Wales,4,0,2,0
+2020-02-01,Australia,Queensland,3,0,0,0
+2020-02-01,Australia,Victoria,2,0,0,0
+2020-02-01,Cambodia,,1,0,0,0
+2020-02-01,Canada,British Columbia,1,0,0,0
+2020-02-01,Canada,Ontario,2,0,0,0
+2020-02-01,China,Anhui,237,0,3,0
+2020-02-01,China,Beijing,139,1,5,0
+2020-02-01,China,Chongqing,238,1,1,0
+2020-02-01,China,Fujian,120,0,0,0
+2020-02-01,China,Gansu,35,0,0,0
+2020-02-01,China,Guangdong,436,0,10,0
+2020-02-01,China,Guangxi,88,0,2,0
+2020-02-01,China,Guizhou,29,0,2,0
+2020-02-01,China,Hainan,58,1,1,0
+2020-02-01,China,Hebei,96,1,0,0
+2020-02-01,China,Heilongjiang,59,2,0,0
+2020-02-01,China,Henan,352,2,3,0
+2020-02-01,China,Hong Kong,13,0,0,0
+2020-02-01,China,Hubei,7153,249,169,0
+2020-02-01,China,Hunan,332,0,3,0
+2020-02-01,China,Inner Mongolia,20,0,0,0
+2020-02-01,China,Jiangsu,168,0,5,0
+2020-02-01,China,Jiangxi,240,0,7,0
+2020-02-01,China,Jilin,14,0,1,0
+2020-02-01,China,Liaoning,60,0,1,0
+2020-02-01,China,Macau,7,0,0,0
+2020-02-01,China,Ningxia,21,0,1,0
+2020-02-01,China,Qinghai,8,0,0,0
+2020-02-01,China,Shaanxi,87,0,0,0
+2020-02-01,China,Shandong,184,0,2,0
+2020-02-01,China,Shanghai,153,1,9,0
+2020-02-01,China,Shanxi,47,0,1,0
+2020-02-01,China,Sichuan,177,1,1,0
+2020-02-01,China,Taiwan,10,0,0,0
+2020-02-01,China,Tianjin,32,0,0,0
+2020-02-01,China,Tibet,1,0,0,0
+2020-02-01,China,Xinjiang,17,0,0,0
+2020-02-01,China,Yunnan,83,0,1,0
+2020-02-01,China,Zhejiang,537,0,14,0
+2020-02-01,Finland,,1,0,0,0
+2020-02-01,France,,6,0,0,0
+2020-02-01,Germany,Bavaria,7,0,0,0
+2020-02-01,India,,1,0,0,0
+2020-02-01,Italy,,2,0,0,0
+2020-02-01,Japan,,17,0,1,0
+2020-02-01,Malaysia,,8,0,0,0
+2020-02-01,Nepal,,1,0,0,0
+2020-02-01,Philippines,,1,0,0,0
+2020-02-01,Russia,,2,0,0,0
+2020-02-01,Singapore,,16,0,0,0
+2020-02-01,South Korea,,11,0,0,0
+2020-02-01,Spain,,1,0,0,0
+2020-02-01,Sri Lanka,,1,0,0,0
+2020-02-01,Sweden,,1,0,0,0
+2020-02-01,Thailand,,19,0,7,0
+2020-02-01,UK,,2,0,0,0
+2020-02-01,United Arab Emirates,,4,0,0,0
+2020-02-01,United States,Arizona,1,0,0,0
+2020-02-01,United States,California,3,0,0,0
+2020-02-01,United States,Illinois,2,0,0,0
+2020-02-01,United States,Washington,1,0,0,0
+2020-02-01,Vietnam,,2,0,0,0
