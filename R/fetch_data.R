@@ -5,67 +5,73 @@ library(lubridate)
 library(data.table)
 library(googlesheets4)
 library(stringr)
+library(RCurl)
 
 Sys.setlocale(category="LC_ALL",locale="chinese")
-# library(magick)
-# jhu_url <- "https://docs.google.com/spreadsheets/d/169AP3oaJZSMTquxtrkgFYMSp4gTApLTTWqo25qCpjL0/htmlview?usp=sharing&sle=true#"
-sheets_auth('zhongjzsb@gmail.com')
-jhu_url <- 'https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'
-jhu_allsheets <- sheets_get(jhu_url)
-jhu_sheetnames <- jhu_allsheets$sheets$name
 
-jhu_data_list <- list()
-jhu_data_list
-for (i_name in jhu_sheetnames) {
-    i_sheet <- as.data.table(read_sheet(jhu_url, sheet = i_name))
-    setnames(i_sheet, 'Country', 'Country/Region', skip_absent = TRUE)
-    setnames(i_sheet, 'Date last updated', 'Last Update', skip_absent = TRUE)
-    
-    if (i_name == 'Jan25_12pm') {
-        i_name = 'Jan25_06pm'
-    }
-    i_string <- strsplit(i_name, '_')[[1]]
-    i_day <- regmatches(i_string[1], gregexpr('[0-9]+', i_string[1]))[[1]]
-    i_month <- regmatches(i_string[1], gregexpr('[a-zA-Z]+', i_string[1]))[[1]]
-    i_time <- regmatches(i_string[2], gregexpr('[0-9]+', i_string[2]))[[1]]
-    i_am <- regmatches(i_string[2], gregexpr('[a-z]+', i_string[2]))[[1]]
-    
-    if (nchar(i_time) >= 3){
-        i_datetime <- mdy_hm(paste0(i_month, ' ', i_day, ' 2020, ', str_sub(i_time, end = 1), ':', str_sub(i_time, start= -2)), tz='EST')
-    } else  {
-        i_datetime <- mdy_hm(paste0(i_month, ' ', i_day, ' 2020, ', i_time, ':00'), tz = 'EST')
-    }
-    if (i_am == 'pm') {
-        i_datetime <- i_datetime + hours(12)
-    }
-    
-    i_sheet[, DateTime:=i_datetime]
-    jhu_data_list[[i_name]] <- i_sheet    
-    
-}
+# ----------
+# This google sheet no longer updates
+# 
+# sheets_auth('zhongjzsb@gmail.com')
+# jhu_url <- 'https://docs.google.com/spreadsheets/d/1UF2pSkFTURko2OvfHWWlFpDFAr1UxCBA4JLwlSP6KFo/edit#gid=0'
+# jhu_allsheets <- sheets_get(jhu_url)
+# jhu_sheetnames <- jhu_allsheets$sheets$name
+# 
+# confirmed_data <- as.data.table(read_sheet(jhu_url, sheet = 'Confirmed'))
+# recovered_data <- as.data.table(read_sheet(jhu_url, sheet = 'Recovered'))
+# death_data <- as.data.table(read_sheet(jhu_url, sheet = 'Death'))
+# death_data[, `1/21/2020 10:00 PM`:=as.numeric(`1/21/2020 10:00 PM`)]
+# death_data[, `1/22/2020 12:00 PM`:=as.numeric(`1/22/2020 12:00 PM`)]
+# death_data[, `1/23/2020 12:00 PM`:=as.numeric(`1/23/2020 12:00 PM`)]
+# setnames(confirmed_data, 'First confirmed date in country (Est.)', 'First confirmed date in country')
+# -----------
 
-jhu_data <- rbindlist(jhu_data_list, fill = TRUE)
-head(jhu_data)
+confirmed_data <- fread(getURL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"))
+recovered_data <- fread(getURL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv"))
+death_data <- fread(getURL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv"))
 
-# fix some data issues.
-jhu_data[, Date:=as.Date(DateTime)]
-jhu_data[is.na(Confirmed), Confirmed:=0]
-jhu_data[is.na(Deaths), Deaths:=0]
-jhu_data[is.na(Recovered), Recovered:=0]
-jhu_data[is.na(Suspected), Suspected:=0]
-jhu_data[`Country/Region`=='Mainland China', `Country/Region`:='China']
-jhu_data[`Province/State` %in% c('Hong Kong', 'Macau', 'Taiwan'), `Country/Region`:='China']
-jhu_data[`Country/Region`=='US', `Country/Region`:='United States']
-jhu_data[`Province/State`=='Chicago', `Province/State`:='Illinois']
+# Ref: https://stackoverflow.com/questions/32940580/convert-some-column-classes-in-data-table
+cols <- names(recovered_data)[5:dim(recovered_data)[2]]
+recovered_data[, (cols) := lapply(.SD, as.integer), .SDcols = cols]
 
-jhu_data[, .(.N),`Country/Region`]
-jhu_data[, lapply(.SD, sum), c('Date', 'Country/Region'), .SDcols=c('Confirmed', 'Deaths', 'Recovered', 'Suspected')]
+# for (col in cols) set(dat, j = col, value = as.integer(dat[[col]]))
+# for (col in cols) dat[, (col) := as.integer(dat[[col]])]
 
-setorder(jhu_data, Date, `Country/Region`, `Province/State`)
+# head(confirmed_data)
+confirmed <- melt(confirmed_data, id=1:4, measure=colnames(confirmed_data)[5:dim(confirmed_data)[2]], value.factor=TRUE, variable.name = "Date", value.name = "Num")
+recovered <- melt(recovered_data, id=1:4, measure=colnames(recovered_data)[5:dim(recovered_data)[2]], value.factor=TRUE, variable.name = "Date", value.name = "Num")
+death <- melt(death_data, id=1:4, measure=colnames(death_data)[5:dim(death_data)[2]], value.factor=TRUE, variable.name = "Date", value.name = "Num")
+
+confirmed[, Type:='confirmed']
+recovered[, Type:='recovered']
+death[, Type:='death']
+
+data <- rbindlist(list(confirmed, recovered, death), fill = TRUE)
+data[is.na(Num), Num:=0]
+# data[, Time:=mdy_hm(Time)]
+data[, Date:=mdy(Date)]
+
+data[`Country/Region`=='Mainland China', `Country/Region`:='China']
+data[`Province/State` %in% c('Hong Kong', 'Macau', 'Taiwan'), `Country/Region`:='China']
 
 # Here we use max number in the day, it's not ideal but reasonable.
-jhu_daily_data <- jhu_data[, lapply(.SD, max), by=c('Date', 'Country/Region', 'Province/State'),.SDcols=c('Confirmed', 'Deaths', 'Recovered', 'Suspected')]
+# daily_data <- data[, .(Num=max(Num)), by=c('Date', 'Type', 'Country/Region', 'Province/State')]
 
-fwrite(jhu_daily_data, './data/jhu_daily_data.csv')
+saveRDS(data, './data/data.RDS')
+fwrite(data, './data/data.csv')
+# saveRDS(daily_data, './data/daily_data.RDS')
+# fwrite(daily_data, './data/daily_data.csv')
 
 # Ref: [1] http://boazsobrado.com/blog/2019/01/13/where-i-was-in-2018/
+
+# some analysis
+
+head(data)
+
+data[, sum(Num),`Country/Region`][order(`Country/Region`)]
+data[, sum(Num),`Province/State`][order(`Province/State`)]
+china_data <- data[`Country/Region`=='China', .(TotalNum=sum(Num)), .(Time, Type)]
+china_data[Type=='death', .(TotalNum)] / china_data[Type=='confirmed', .(TotalNum)]
+sum_data <- dcast(china_data, Time~Type, value.var='TotalNum')
+sum_data[, DeathRatio:=death/confirmed]
+

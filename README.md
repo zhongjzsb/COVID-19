@@ -1,17 +1,17 @@
-# 2019-nCoV
+# COVID-19
 
-Visualizing and modeling the 2019-nCoV is the main objective here. The data are coming from [JHU nCov](https://systems.jhu.edu/research/public-health/ncov/).
+Visualizing and modeling the 2019-nCoV is the main objective here. The data are coming from [JHU CSSE](https://github.com/CSSEGISandData/COVID-19) (Old website is [JHU nCov](https://systems.jhu.edu/research/public-health/ncov/)).
 
 As I don't know anything about javascript, so I'm trying to use R to implement this idea. So the initial idea was to create an animated map with dots.
 
-![jhu_animate_china](./figures/jhu_animate_china.gif)
+![animate_china](./figures/animate_china.gif)
 
-![jhu_animate_world](./figures/jhu_animate_world.gif)
+![animate_world](./figures/animate_world.gif)
 
 
 Then I come into this [github](https://github.com/globalcitizen/2019-wuhan-coronavirus-data/) and created similar plot within R.
 
-![jhu_china_polygon_animate](./figures/jhu_china_polygon_animate.gif)
+![china_polygon_animate](./figures/china_polygon_animate.gif)
 
 
 ## Todo:
@@ -21,7 +21,7 @@ Then I come into this [github](https://github.com/globalcitizen/2019-wuhan-coron
 3. Plotly?
 
 ## References:
-- [JHU nCov](https://systems.jhu.edu/research/public-health/ncov/)
+- [JHU CSSE](https://systems.jhu.edu/research/public-health/ncov/)
 - [2019-wuhan-ncov](https://github.com/globalcitizen/2019-wuhan-coronavirus-data/)
 - [some blog](http://boazsobrado.com/blog/2019/01/13/where-i-was-in-2018/)
 - [changing-ggplot-geom-sf-choropleth-fill-color](https://stackoverflow.com/questions/48288183/changing-ggplot-geom-sf-choropleth-fill-colors)
