@@ -14,7 +14,9 @@ p.line <- ggplot(regional_data, aes(x = Date, y = TotalNum, col=Type)) +
 p.line.plotly <- ggplotly(p.line)
 htmlwidgets::saveWidget(
     p.line.plotly,
-    here::here('figures', 'china-vs-outside.html'),
+    here::here("static",
+               "images", 
+               'china-vs-outside.html'),
     selfcontained = TRUE,
     background = 'grey',
     title='China vs Outside')

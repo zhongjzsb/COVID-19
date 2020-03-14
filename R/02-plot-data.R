@@ -91,7 +91,8 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
         nframes=length(unique(plot_data$Date))
     )
     anim_save(here::here(
-        "figures", 
+        "static",
+        "images", 
         paste0(plot_figname,".gif")
     ), animate)
 }

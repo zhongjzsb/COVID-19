@@ -59,4 +59,7 @@ china_polygon_animate <- animate(
     fps = 2,
     nframes=length(unique(china_data$Date))
 )
-anim_save(here::here("figures", "china_polygon_confirmed.gif"), china_polygon_animate)
+anim_save(here::here("static",
+                     "images",
+                     "china_polygon_confirmed.gif"), 
+          china_polygon_animate)
