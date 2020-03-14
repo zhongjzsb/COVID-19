@@ -17,7 +17,7 @@ library(plotly)
 source(here::here('R', '01-fetch-data.R'))
 
 # ggplotly ----
-data[, IsChina:=as.factor(ifelse(`Country/Region`=='Mainland China', 'China', 'OutsideChina'))]
+data[, IsChina:=as.factor(ifelse(`Country/Region`=='China', 'China', 'OutsideChina'))]
 
 regional_data <- data[, .(TotalNum=sum(Num)), by=.(Type, IsChina, Date)]
 p.line <- ggplot(regional_data, aes(x = Date, y = TotalNum, col=Type)) +
@@ -26,6 +26,7 @@ p.line.plotly <- ggplotly(p.line)
 htmlwidgets::saveWidget(
     p.line.plotly,
     here::here('figures', 'china-vs-outside.html'),
+    selfcontained = TRUE,
     background = 'grey',
     title='China vs Outside')
 

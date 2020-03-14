@@ -88,8 +88,8 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
     
     animate <- animate(
         p_ggplot, 
-        width = 800,
-        height = 500,
+        width = 1600,
+        height = 900,
         fps = 2,
         nframes=length(unique(plot_data$Date))
     )
