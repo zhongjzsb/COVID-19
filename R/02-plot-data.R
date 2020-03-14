@@ -12,9 +12,6 @@ library(sf)
 library(here)
 library(stringr)
 
-# fetch data ---------
-source(here::here('R', '01-fetch-data.R'))
-
 # Plot parameters -----
 plot_breaks <- c(1, 10, 100, 1000, 10000)
 plot_labels <- c('1', '10', '100', '1000', '10000')

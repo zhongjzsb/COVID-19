@@ -3,18 +3,7 @@
 
 # load packages ---- 
 library(ggplot2)
-library(leafletCN)
-library(ggthemes)
-library(mapdata)
-library(data.table)
-library(gganimate)
-library(sf)
-library(here)
-library(stringr)
 library(plotly)
-
-# fetch data ---------
-source(here::here('R', '01-fetch-data.R'))
 
 # ggplotly ----
 data[, IsChina:=as.factor(ifelse(`Country/Region`=='China', 'China', 'OutsideChina'))]

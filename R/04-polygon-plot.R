@@ -12,9 +12,6 @@ library(sf)
 library(here)
 library(stringr)
 
-# fetch data ---------
-source(here::here('R', '01-fetch-data.R'))
-
 # Alternative plots ------------
 # map fill plot 
 china_data <- data[
