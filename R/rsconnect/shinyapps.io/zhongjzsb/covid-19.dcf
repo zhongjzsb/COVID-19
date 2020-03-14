@@ -1,0 +1,13 @@
+name: covid-19
+title: covid-19
+username:
+account: zhongjzsb
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1946011
+bundleId: 2880203
+url: https://zhongjzsb.shinyapps.io/covid-19/
+when: 1584154961.87635
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 02-plot-data.R|03-analyze-data.R|old/fetch_data_old.R|old/plotly_temp.R|old/visualization_old.R

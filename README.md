@@ -27,3 +27,4 @@ Then I come into this [github](https://github.com/globalcitizen/2019-wuhan-coron
 - [changing-ggplot-geom-sf-choropleth-fill-color](https://stackoverflow.com/questions/48288183/changing-ggplot-geom-sf-choropleth-fill-colors)
 - [ggplot2-sf](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html)
 - [cn-cities](https://simplemaps.com/data/cn-cities)
+- [convert-some-column-classes-in-data-table](https://stackoverflow.com/questions/32940580/convert-some-column-classes-in-data-table)

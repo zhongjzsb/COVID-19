@@ -1,6 +1,7 @@
 # Author: Jingyu Bao
 # Email: zhongjzsb@gmail.com
 
+# load packages ---- 
 library(ggplot2)
 library(leafletCN)
 library(ggthemes)
@@ -8,15 +9,16 @@ library(mapdata)
 library(data.table)
 library(gganimate)
 library(sf)
+library(here)
 
-data <- readRDS('./data/data.RDS')
-str(data)
+# fetch data ---------
+source(here::here('R', '01-fetch-data.R'))
 
 # -------------------
 # Plot Cases in China
 
 china_data <- data[`Country/Region`=='China' & Type=='confirmed', ]
-china_data[, .N, by=.(`Province/State`, Date)]
+# china_data[, .N, by=.(`Province/State`, Date)]
 setorder(china_data, Date, `Country/Region`, `Province/State`)
 
 china_map_dt = data.frame(regionNames("china"),
@@ -35,21 +37,65 @@ china_ggplot <- ggplot(data = china_map_sf) +
         legend.title=element_text(size = 30), 
         legend.text=element_text(size = 30)) + 
     transition_time(Date) +
-    labs(title = 'Day: {frame_time}')
+    labs(title = 'Number of Cumulative Confirmed Case on {frame_time}')
 
 animate_china <- animate(
     china_ggplot, 
     width = 1500,
     height = 1500,
-    fps = 1,
+    fps = 2,
     nframes=length(unique(china_data$Date))
     # nframes=24
 )
-anim_save("./figures/animate_china.gif", animate_china)
+anim_save(here::here("figures", "animate_china.gif"), animate_china)
+
+# -----------------------
+# Plot Cases in the world
+
+world_data <- data[Type=='confirmed', ]
+world_data[, Confirmed_Group := (cut(
+    Num, 
+    breaks = c(0, 10, 100, 1000, 10000), 
+    labels = c('(0, 10)', '(10, 100)', '(100, 1000)', '(1000, Inf)')
+))]
+world_data[, Confirmed_Value := as.numeric(Confirmed_Group)]
+
+world_map_dt = data.frame(regionNames("world"),
+                          value=c(1:length(regionNames("world"))))
+world_map = leafletGeo("world", world_map_dt)
+world_map_sf <- st_as_sf(world_map)
+world_ggplot <- ggplot(data = world_map_sf) +
+    geom_sf() +
+    geom_point(aes(x = Long, y = Lat, size=Confirmed_Value),
+               data = world_data,
+               color='red', alpha = .5
+    ) +
+    scale_size_continuous(
+        name = "Confirmed",
+        range = c(5, 12), 
+        breaks = c(1: 4), 
+        labels = c('(0, 10)', '(10, 100)', '(100, 1000)', '(1000, Inf)')) + 
+    theme(
+        plot.title=element_text(size = 40, face = "bold"),
+        legend.title=element_text(size = 30),
+        legend.text=element_text(size = 30),
+        legend.position = 'right') + 
+    transition_time(Date) +
+    labs(title = 'Number of Cumulative Confirmed Case on {frame_time}')
+
+animate_world <- animate(
+    world_ggplot, 
+    width = 1500,
+    height = 1500,
+    fps = 2,
+    nframes=length(unique(world_data$Date))
+    # nframes=24
+)
+anim_save(here::here("figures", "animate_world.gif"), animate_world)
+
 
 # map fill plot 
-# inspired from [3]
-ChineseProvinceNames <- fread('./data/ChineseProvinceNames.csv', encoding = 'UTF-8')
+ChineseProvinceNames <- fread(here::here('data', 'ChineseProvinceNames.csv'), encoding = 'UTF-8')
 
 china_map_polygon_list <- list()
 for (i_date in unique(china_data$Date)){
@@ -80,7 +126,7 @@ china_polygon <- ggplot() +
         legend.title=element_text(size = 20), 
         legend.text=element_text(size = 20),
     ) +
-    labs(title = 'Day: {frame_time}', fill = 'Confirmed')
+    labs(title = 'Number of Cumulative Confirmed Case on {frame_time}', fill = 'Confirmed')
 china_polygon_animate <- animate(
     china_polygon, 
     width = 2000,
@@ -89,52 +135,8 @@ china_polygon_animate <- animate(
     nframes=length(unique(china_data$Date))
     # nframes=24
 )
-anim_save("./figures/china_polygon_animate.gif", china_polygon_animate)
+anim_save(here("figures", "china_polygon_animate.gif"), china_polygon_animate)
 
-
-# -----------------------
-# Plot Cases in the world
-
-world_data <- data[Type=='confirmed', ]
-world_data[, Confirmed_Group := (cut(
-    Num, 
-    breaks = c(0, 3, 10, 100, 1000), 
-    labels = c('(0, 3)', '(3, 10)', '(10, 100)', '(100, Inf)')
-))]
-world_data[, Confirmed_Value := as.numeric(Confirmed_Group)]
-
-world_map_dt = data.frame(regionNames("world"),
-                          value=c(1:length(regionNames("world"))))
-world_map = leafletGeo("world", world_map_dt)
-world_map_sf <- st_as_sf(world_map)
-world_ggplot <- ggplot(data = world_map_sf) +
-    geom_sf() +
-    geom_point(aes(x = Long, y = Lat, size=Confirmed_Value),
-               data = world_data,
-               color='red', alpha = .5
-    ) +
-    scale_size_continuous(
-        name = "Confirmed",
-        range = c(5, 12), 
-        breaks = c(1:4), 
-        labels = c('(0, 3)', '(3, 10)', '(10, 100)', '(100, Inf)')) + 
-    theme(
-        plot.title=element_text(size = 40, face = "bold"),
-        legend.title=element_text(size = 30),
-        legend.text=element_text(size = 30),
-        legend.position = 'right') + 
-    transition_time(Date) +
-    labs(title = 'Day: {frame_time}')
-
-animate_world <- animate(
-    world_ggplot, 
-    width = 1500,
-    height = 1500,
-    fps = 1,
-    nframes=length(unique(world_data$Date))
-    # nframes=24
-)
-anim_save("./figures/animate_world.gif", animate_world)
 
 ## plotly
 
