@@ -53,8 +53,21 @@ data <- rbindlist(list(confirmed, recovered, death), fill = TRUE)
 data[is.na(Num), Num:=0]
 data[, Date:=mdy(Date)]
 
-data[`Country/Region`=='Mainland China', `Country/Region`:='China']
-data[`Province/State` %in% c('Hong Kong', 'Macau', 'Taiwan'), `Country/Region`:='China']
+data[`Country/Region`=='Taiwan*', `Province/State`:='Taiwan']
+data[`Country/Region` %in% c('Mainland China', 'Taiwan*'), `Country/Region`:='China']
+data[`Province/State` %in% c('Hong Kong', 'Macau'), `Country/Region`:='China']
 
+# calculate current case: confirmed - death - recovered
+current <- dcast(data, ...~Type, value.var = 'Num')
+current[, `:=`(
+    current=confirmed - death - recovered,
+    confirmed=NULL,
+    death=NULL,
+    recovered=NULL,
+    Type='current'
+)]
+setnames(current, 'current', 'Num')
+
+data <- rbindlist(list(data, current), fill = TRUE)
 # saveRDS(data, './data/data.RDS')
 # fwrite(data, './data/data.csv')
