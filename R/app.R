@@ -6,11 +6,13 @@ library(stringr)
 library(RCurl)
 library(ggplot2)
 # -----------
-source(here::here('R', '01-fetch-data.R'))
+source('01-fetch-data.R')
 
+# top 20 countries ranking by total cases
 top20_countries <- data[
     , .(TotalCase=max(Num)), `Country/Region`
     ][order(-TotalCase)]$`Country/Region`[1:20]
+
 # 
 ui <- fluidPage(
     
@@ -34,17 +36,28 @@ ui <- fluidPage(
     )
 )
 
-
 # 
 server <- function(input, output) {
     
     p <- reactive({
         if (input$type == 'All') {
-            ggplot(country_data[`Country/Region`==input$country, ]) +
-                geom_col(aes(x=Date, y=Num, col=Type))
+            ggplot(
+                country_data[`Country/Region`==input$country, ]
+            ) + geom_line(aes(x = Date, y = Num, col=Type), size = 2) + 
+                theme_gray(base_size = 20) +
+                theme(legend.position = 'top') +
+                facet_wrap(. ~ `Country/Region`, nrow = 4, scales = "free_y") + 
+                labs(title = 'The Entire World')
         } else {
-            ggplot(country_data[`Country/Region`==input$country & Type==input$type, ]) +
-                geom_col(aes(x=Date, y=Num))
+            ggplot(
+                country_data[`Country/Region`==input$country & Type==input$type, ]
+            ) + geom_col(
+                aes(x = Date, y = Num),
+                fill='red',
+                position = position_stack(reverse = TRUE)) + 
+                theme_gray(base_size = 20) +
+                theme(legend.position = 'top') +
+                labs(title = input$country)
         }
     })
     output$country_plot <- renderPlot(p())

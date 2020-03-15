@@ -5,9 +5,9 @@ account: zhongjzsb
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1946011
-bundleId: 2880203
+bundleId: 2884099
 url: https://zhongjzsb.shinyapps.io/covid-19/
-when: 1584154961.87635
+when: 1584302591.87361
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: 02-plot-data.R|03-analyze-data.R|old/fetch_data_old.R|old/plotly_temp.R|old/visualization_old.R
+ignoredFiles: 02-spatial-plot.R|03-ggplotly-plot.R|04-polygon-plot.R|05-country-plot.R|10-analyze-data.R
