@@ -28,7 +28,8 @@ I come into this [github](https://github.com/globalcitizen/2019-wuhan-coronaviru
 
 ## Todo:
 
-1. [ ] Modelling the data with SIR?
+1. [ ] Modelling the data with SIR.
+2. [ ] Shiny app update.
 
 ## Acknowledgement
 
