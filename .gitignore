@@ -2,5 +2,4 @@
 .Rhistory
 .RData
 .Ruserdata
-.bat
-.log
+run-all-schedule.bat
