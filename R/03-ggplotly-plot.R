@@ -14,10 +14,11 @@ p.bar <- ggplot(
     aes(x = Date, y = TotalNum, fill=Type)) +
     geom_col(position = position_stack(reverse = TRUE)) + 
     theme(legend.position = 'top') +
+    theme_gray(base_size = 25) +
     facet_grid(. ~ IsChina) + 
     labs(title = 'China vs Outside')
 p.line.plotly <- ggplotly(
-    p.bar, width=1000, height=400) %>%
+    p.bar) %>%
     layout(legend = list(
         orientation = "h",
         y = 1.2,
