@@ -1,29 +1,38 @@
 # COVID-19
 
-Visualizing and modeling the 2019-nCoV is the main objective here. The data are coming from [JHU CSSE](https://github.com/CSSEGISandData/COVID-19) (Old website is [JHU nCov](https://systems.jhu.edu/research/public-health/ncov/)).
+Visualizing and modeling the COVID-19 is the main objective here. 
 
-As I don't know anything about javascript, so I'm trying to use R to implement this idea. So the initial idea was to create an animated map with dots.
+I'm trying to use R to implement this idea. The initial idea was to create an animated map with dots. I generalized the code in order to plot multi countries if we have the detailed location data of the cases. You can find my post [here](https://zhongjzsb.com/posts/baobao-posts/covid-19/). It includes some other types of plots, such ggplotly and shiny app.
+
+Here are the plots for China, US and the entire world.
 
 ![animate_china](./static/images/china_confirmed.gif)
 
-![animate_world](./static/images/world_confirmed.gif)
+![animate_us](./static/images/us_confirmed.gif)
 
+![animate_world](./static/images/world_confirmed.gif)
 
 ![animate_china](./static/images/china_current.gif)
 
 ![animate_world](./static/images/world_current.gif)
 
+![animate_us](./static/images/us_current.gif)
 
-Then I come into this [github](https://github.com/globalcitizen/2019-wuhan-coronavirus-data/) and created similar plot within R.
 
-![china_polygon_animate](./figures/china_polygon_confirmed.gif)
+## Alternative plot
+
+I come into this [github](https://github.com/globalcitizen/2019-wuhan-coronavirus-data/) and created similar plot in R.
+
+![china_polygon_animate](./static/images/china_polygon_confirmed.gif)
 
 
 ## Todo:
 
-1. Modelling the data with SIR?
-2. Create leaflet map plot with time-series?
-3. Plotly?
+1. [ ] Modelling the data with SIR?
+
+## Acknowledgement
+
+The data source is from [JHU CSSE](https://github.com/CSSEGISandData/COVID-19) (Old website is [JHU nCov](https://systems.jhu.edu/research/public-health/ncov/)).
 
 ## References:
 - [JHU CSSE](https://systems.jhu.edu/research/public-health/ncov/)

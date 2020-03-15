@@ -16,7 +16,7 @@ library(stringr)
 plot_breaks <- c(1, 10, 100, 1000, 10000)
 plot_labels <- c('1', '10', '100', '1000', '10000')
 
-plot_regions <- c('china', 'world')
+plot_regions <- c('china', 'world', 'us')
 plot_types <- c('confirmed', 'current')
 plot_titles <- c(
     'Number of Cumulative Confirmed Cases',
@@ -42,12 +42,22 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
     plot_type <- plot_matrix$Type[i_plot]
     plot_figname <- plot_matrix$FigName[i_plot]
     
-    if (plot_region != 'world') {
+    if (plot_region == 'world') {
+        plot_data <- data[Type==plot_type & Num > 0, ]
+    } else if (plot_region == 'us'){
         plot_data <- data[
-            toupper(`Country/Region`)==toupper(plot_region) & Type==plot_type, 
-        ]
+            toupper(`Country/Region`)==toupper(plot_region) & 
+                Type==plot_type &
+                Num > 0 &
+                Long > -140 & 
+                Long < -50
+            ]
     } else {
-        plot_data <- data[Type==plot_type, ]
+        plot_data <- data[
+            toupper(`Country/Region`)==toupper(plot_region) & 
+                Type==plot_type &
+                Num > 0
+            ]
     }
     
     setorder(plot_data, Date, `Country/Region`, `Province/State`)
@@ -59,7 +69,7 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
         map <- leafletGeo(plot_region, map_dt)
         map_sf <- st_as_sf(map)
     } else if (plot_region == 'us') {
-        map_sf <- st_as_sf(map('state', plot = FALSE, fill = TRUE))    
+        map_sf <- st_as_sf(maps::map('state', plot = FALSE, fill = TRUE))    
     } else {
         map_sf <- st_as_sf(map(as.character(plot_region), plot = FALSE, fill = TRUE))
     }
@@ -71,30 +81,55 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
                    colour = 'red', alpha = .5
         ) +
         scale_size_continuous(
-            range = c(0, 30),
-            breaks = plot_breaks, 
+            range = c(3, 30),
+            breaks = plot_breaks,
             labels = plot_labels,
-            trans = "log"
-        ) + 
+            # trans = "log"
+        ) +
         theme(
             plot.title=element_text(size = 40, face = "bold"),
-            legend.title=element_text(size = 30), 
-            legend.text=element_text(size = 30)) + 
+            legend.title=element_text(size = 30),
+            legend.text=element_text(size = 30)) +
         transition_time(Date) +
         labs(title = paste0(plot_title, ' on {frame_time}'))
-    
+
     animate <- animate(
-        p_ggplot, 
+        p_ggplot,
         width = 1600,
         height = 900,
         fps = 2,
+        end_pause = 10,
         nframes=length(unique(plot_data$Date))
     )
     anim_save(here::here(
         "static",
-        "images", 
+        "images",
         paste0(plot_figname,".gif")
     ), animate)
+    
+    
+    p_last <- ggplot(data = map_sf) +
+        geom_sf() +
+        geom_point(aes(x = Long, y = Lat, size = Num),
+                   data = plot_data[Date==max(Date)],
+                   colour = 'red', alpha = .5
+        ) +
+        scale_size_continuous(
+            range = c(3, 30),
+            breaks = plot_breaks, 
+            labels = plot_labels,
+            # trans = "log"
+        ) + 
+        theme(
+            plot.title=element_text(size = 40, face = "bold"),
+            legend.title=element_text(size = 30), 
+            legend.text=element_text(size = 30)) +
+        labs(title = paste0(plot_title, ' on ', max(plot_data$Date)))
+    ggsave(here::here(
+        "static",
+        "images", 
+        paste0(plot_figname,".png")
+    ), p_last, width = 20, height = 12, dpi = 300, units = "in")
 }
 
 
