@@ -14,16 +14,10 @@ p.bar <- ggplot(
     aes(x = Date, y = TotalNum, fill=Type)) +
     geom_col(position = position_stack(reverse = TRUE)) + 
     theme(legend.position = 'top') +
-    theme_gray(base_size = 25) +
+    # theme_gray(base_size = 13) +
     facet_grid(. ~ IsChina) + 
     labs(title = 'China vs Outside')
-p.line.plotly <- ggplotly(
-    p.bar) %>%
-    layout(legend = list(
-        orientation = "h",
-        y = 1.2,
-        x = 0.3
-    ))
+p.line.plotly <- ggplotly(p.bar)
 htmlwidgets::saveWidget(
     p.line.plotly,
     here::here("static",
