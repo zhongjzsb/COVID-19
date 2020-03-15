@@ -81,7 +81,7 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
                    colour = 'red', alpha = .5
         ) +
         scale_size_continuous(
-            range = c(3, 30),
+            range = c(3, 40),
             breaks = plot_breaks,
             labels = plot_labels,
             # trans = "log"
@@ -97,7 +97,7 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
         p_ggplot,
         width = 1600,
         height = 900,
-        fps = 2,
+        fps = 4,
         end_pause = 10,
         nframes=length(unique(plot_data$Date))
     )
@@ -115,7 +115,7 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
                    colour = 'red', alpha = .5
         ) +
         scale_size_continuous(
-            range = c(3, 30),
+            range = c(3, 40),
             breaks = plot_breaks, 
             labels = plot_labels,
             # trans = "log"
