@@ -17,6 +17,14 @@ confirmed_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Confirmed
 recovered_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Recovered.csv")))
 death_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Deaths.csv")))
 
+# remove columns with NA's
+confirmed_data <- confirmed_data[
+    , colSums(!is.na(confirmed_data)) == nrow(confirmed_data), with=FALSE]
+recovered_data <- recovered_data[
+    , colSums(!is.na(confirmed_data)) == nrow(confirmed_data), with=FALSE]
+death_data <- death_data[
+    , colSums(!is.na(confirmed_data)) == nrow(confirmed_data), with=FALSE]
+
 cols <- names(recovered_data)[5:dim(recovered_data)[2]]
 recovered_data[, (cols) := lapply(.SD, as.integer), .SDcols = cols]
 
