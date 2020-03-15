@@ -9,9 +9,20 @@ library(plotly)
 data[, IsChina:=as.factor(ifelse(`Country/Region`=='China', 'China', 'OutsideChina'))]
 
 regional_data <- data[, .(TotalNum=sum(Num)), by=.(Type, IsChina, Date)]
-p.line <- ggplot(regional_data, aes(x = Date, y = TotalNum, col=Type)) +
-    geom_line() + facet_grid(. ~ IsChina)
-p.line.plotly <- ggplotly(p.line)
+p.bar <- ggplot(
+    regional_data[Type!='confirmed'], 
+    aes(x = Date, y = TotalNum, fill=Type)) +
+    geom_col(position = position_stack(reverse = TRUE)) + 
+    theme(legend.position = 'top') +
+    facet_grid(. ~ IsChina) + 
+    labs(title = 'China vs Outside')
+p.line.plotly <- ggplotly(
+    p.bar, width=1000, height=400) %>%
+    layout(legend = list(
+        orientation = "h",
+        y = 1.2,
+        x = 0.3
+    ))
 htmlwidgets::saveWidget(
     p.line.plotly,
     here::here("static",
@@ -20,20 +31,3 @@ htmlwidgets::saveWidget(
     selfcontained = TRUE,
     background = 'grey',
     title='China vs Outside')
-
-
-
-## plotly ----------
-
-# library(plotly)
-# gg <- ggplot(china_data, aes(Long, Lat, color = 'red', frame = Date, ids = `Province/State`)) +
-#     geom_point(aes(size = Num))
-# ggplotly(gg)
-# 
-# china_ggplotly <- ggplot(data = china_map_sf, frame=Date) +
-#     geom_sf() +
-#     geom_point(aes(x = Long, y = Lat, size=Num),
-#                data = china_data,
-#                colour = 'purple', alpha = .5
-#     )
-# ggplotly(china_ggplot)
