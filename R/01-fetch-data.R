@@ -77,5 +77,9 @@ current[, `:=`(
 setnames(current, 'current', 'Num')
 
 data <- rbindlist(list(data, current), fill = TRUE)
+
+# country-wise data
+country_data <- data[, .(Num=sum(Num)), by=.(Type, `Country/Region`, Date)]
+
 # saveRDS(data, './data/data.RDS')
 # fwrite(data, './data/data.csv')

@@ -7,8 +7,8 @@ library(plotly)
 
 # ggplotly ----
 data[, IsChina:=as.factor(ifelse(`Country/Region`=='China', 'China', 'OutsideChina'))]
-
 regional_data <- data[, .(TotalNum=sum(Num)), by=.(Type, IsChina, Date)]
+
 p.bar <- ggplot(
     regional_data[Type!='confirmed'], 
     aes(x = Date, y = TotalNum, fill=Type)) +

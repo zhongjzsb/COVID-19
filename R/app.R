@@ -8,45 +8,46 @@ library(ggplot2)
 # -----------
 source(here::here('R', '01-fetch-data.R'))
 
-country_data <- data[, .(Num=sum(Num)), .(`Country/Region`, Date, Type)]
-top10_countries <- data[, .(TotalCase=max(Num)), `Country/Region`][order(-TotalCase)]$`Country/Region`[1:10]
-# Define UI for application that draws a histogram
+top20_countries <- data[
+    , .(TotalCase=max(Num)), `Country/Region`
+    ][order(-TotalCase)]$`Country/Region`[1:20]
+# 
 ui <- fluidPage(
     
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("COVID-19 Country-wise Data"),
     
-    # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
-            selectInput('country',
-                        'Top 10 Countries', 
-                        choices = top10_countries),
-            selectInput('type',
-                        'Type', 
-                        choices = c('All', unique(country_data$Type)))
+            selectInput(
+                'country',
+                'Top 20 Country/Region', 
+                choices = top20_countries),
+            selectInput(
+                'type',
+                'Type', 
+                choices = c('All', unique(country_data$Type)))
         ),
         
-        # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("distPlot")
+            plotOutput("country_plot")
         )
     )
 )
 
-# Define server logic required to draw a histogram
+
+# 
 server <- function(input, output) {
     
     p <- reactive({
         if (input$type == 'All') {
             ggplot(country_data[`Country/Region`==input$country, ]) +
-                geom_line(aes(x=Date, y=Num, col=Type))
+                geom_col(aes(x=Date, y=Num, col=Type))
         } else {
             ggplot(country_data[`Country/Region`==input$country & Type==input$type, ]) +
-                geom_line(aes(x=Date, y=Num))
+                geom_col(aes(x=Date, y=Num))
         }
     })
-    output$distPlot <- renderPlot(p())
+    output$country_plot <- renderPlot(p())
     
 }
 
