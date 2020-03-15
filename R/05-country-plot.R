@@ -20,6 +20,6 @@ ggplot(
     labs(title = 'Top 20 Countries')
 
 ggsave(
-    here::here('static', 'images', 'top20counties.png'),
+    here::here('static', 'images', 'top20countries.png'),
     width = 20, height = 12, dpi = 300, units = "in"
 ) 
