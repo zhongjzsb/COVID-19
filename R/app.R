@@ -8,10 +8,10 @@ library(ggplot2)
 # -----------
 source('01-fetch-data.R')
 
-# top 20 countries ranking by total cases
-top20_countries <- data[
+# all countries ranking by total cases
+all_countries <- data[
     , .(TotalCase=max(Num)), `Country/Region`
-    ][order(-TotalCase)]$`Country/Region`[1:20]
+    ][order(-TotalCase)]$`Country/Region`
 
 # 
 ui <- fluidPage(
@@ -22,8 +22,8 @@ ui <- fluidPage(
         sidebarPanel(
             selectInput(
                 'country',
-                'Top 20 Country/Region', 
-                choices = top20_countries),
+                'Country/Region', 
+                choices = all_countries),
             selectInput(
                 'type',
                 'Type', 
@@ -47,7 +47,7 @@ server <- function(input, output) {
                 theme_gray(base_size = 20) +
                 theme(legend.position = 'top') +
                 facet_wrap(. ~ `Country/Region`, nrow = 4, scales = "free_y") + 
-                labs(title = 'The Entire World')
+                labs(title = str_to_title(input$country))
         } else {
             ggplot(
                 country_data[`Country/Region`==input$country & Type==input$type, ]
@@ -57,7 +57,7 @@ server <- function(input, output) {
                 position = position_stack(reverse = TRUE)) + 
                 theme_gray(base_size = 20) +
                 theme(legend.position = 'top') +
-                labs(title = input$country)
+                labs(title = str_to_title(input$country))
         }
     })
     output$country_plot <- renderPlot(p())
