@@ -6,7 +6,7 @@ I'm trying to use R to implement this idea. The initial idea was to create an an
 
 **leaflet map**
 
-[![leaflet_map](./static/images/leaflet_screenshot.png)](./static/images/leaflet-plot.html)
+[![leaflet_map](./static/images/leaflet_screenshot.png)](https://zhongjzsb.com/posts/baobao-posts/covid-19-visualization/)
 
 Here are the plots for China, US and the entire world.
 
