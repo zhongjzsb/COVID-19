@@ -43,3 +43,7 @@ The data source is from [JHU CSSE](https://github.com/CSSEGISandData/COVID-19) (
 - [ggplot2-sf](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html)
 - [cn-cities](https://simplemaps.com/data/cn-cities)
 - [convert-some-column-classes-in-data-table](https://stackoverflow.com/questions/32940580/convert-some-column-classes-in-data-table)
+
+## Licence
+
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
