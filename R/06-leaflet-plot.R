@@ -4,7 +4,10 @@ library(leafpop)
 library(sf)
 library(ggplot2)
 library(htmltools)
+library(leafem)
 library(leaflet.extras)
+library(raster)
+library(mapview)
 
 wide_data <- dcast(data, ...~Type, value.var = 'Num')
 latest_data <- wide_data[Date==max(Date)]
@@ -53,10 +56,10 @@ leaflet_map <- latest_data %>%
         height = 100
     ) %>% 
     addPopupGraphs(popup_plots, group = 'covid-19') %>%
-    addFullscreenControl() %>%
-    addHomeButton(extent(c(-170, 170, -70, 70)), 'Home') %>%
+    addFullscreenControl(position = "topleft") %>%
+    addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
     setView(lng = 0, lat = 40, zoom = 2) 
-leaflet_map
+
 htmlwidgets::saveWidget(
     leaflet_map,     
     here::here(
