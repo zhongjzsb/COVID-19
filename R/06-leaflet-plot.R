@@ -1,3 +1,4 @@
+library(mapview)
 library(leaflet)
 library(dplyr)
 library(leafpop)
@@ -7,9 +8,7 @@ library(htmltools)
 library(leafem)
 library(leaflet.extras)
 library(raster)
-library(mapview)
 
-# glyphicon: glyphicon glyphicon-asterisk glyphicon glyphicon-globe
 
 popup_icons <- awesomeIconList(
     lvl1 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'lightblue'),
@@ -20,10 +19,12 @@ popup_icons <- awesomeIconList(
 
 wide_data <- dcast(data, ...~Type, value.var = 'Num')
 latest_data <- wide_data[Date==max(Date) & confirmed!=0]
-latest_data[, icon_group:=cut(
-    latest_data$current, 
-    breaks=c(-1, 10, 100, 1000, 1000000), 
-    labels=c('lvl1', 'lvl2', 'lvl3', 'lvl4')
+latest_data[, `:=`(
+    icon_group=cut(
+        latest_data$current, 
+        breaks=c(-1, 10, 100, 1000, 1000000), 
+        labels=c('lvl1', 'lvl2', 'lvl3', 'lvl4')),
+    region_label=paste0(`Country/Region`, ', ', `Province/State`)
 )]
 
 popup_plots <- list()
@@ -35,13 +36,15 @@ for (i_row in c(1:nrow(latest_data))) {
         Type != 'confirmed'
     ]) + geom_col(aes(x = Date, y = Num, fill=Type)) +
         labs(title = paste0(
-            i_record$`Country/Region`, '   ---', i_record$`Province/State`, '\n',
+            i_record$`Country/Region`, '  --- ', i_record$`Province/State`, '\n',
             sprintf("Date: %s", i_record$Date), '\n',
             sprintf("#Confirmed: %s   ", i_record$confirmed),
             sprintf("#Current: %s", i_record$current), '\n',
             sprintf("#Death: %s   ", i_record$death),
             sprintf("#Recovered: %s", i_record$recovered)
-        ))
+        )) +
+        theme_gray(base_size = 12) +
+        theme(legend.text=element_text(size=15))
 }
 
 # Create the map
@@ -55,7 +58,7 @@ leaflet_map <- latest_data %>%
         ~Long,
         ~Lat,
         group = "covid-19",
-        label = ~`Country/Region`,
+        label = ~region_label,
         icon = ~popup_icons[icon_group]
     ) %>%
     addPopupGraphs(popup_plots, group = 'covid-19') %>%
