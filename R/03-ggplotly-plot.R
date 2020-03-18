@@ -23,6 +23,7 @@ htmlwidgets::saveWidget(
     here::here("static",
                "images", 
                'china-vs-outside.html'),
-    selfcontained = TRUE,
     background = 'grey',
-    title='China vs Outside')
+    title='China vs Outside',
+    selfcontained = FALSE,
+    libdir = 'r_js')
