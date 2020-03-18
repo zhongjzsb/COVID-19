@@ -9,8 +9,22 @@ library(leaflet.extras)
 library(raster)
 library(mapview)
 
+# glyphicon: glyphicon glyphicon-asterisk glyphicon glyphicon-globe
+
+popup_icons <- awesomeIconList(
+    lvl1 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'lightblue'),
+    lvl2 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'orange'),
+    lvl3 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'red'),
+    lvl4 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black')
+)
+
 wide_data <- dcast(data, ...~Type, value.var = 'Num')
-latest_data <- wide_data[Date==max(Date)]
+latest_data <- wide_data[Date==max(Date) & confirmed!=0]
+latest_data[, icon_group:=cut(
+    latest_data$current, 
+    breaks=c(-1, 10, 100, 1000, 1000000), 
+    labels=c('lvl1', 'lvl2', 'lvl3', 'lvl4')
+)]
 
 popup_plots <- list()
 for (i_row in c(1:nrow(latest_data))) {
@@ -30,7 +44,6 @@ for (i_row in c(1:nrow(latest_data))) {
         ))
 }
 
-# data_sf <- st_as_sf(latest_data, coords = c('Long', 'Lat'))
 # Create the map
 leaflet_map <- latest_data %>%
     leaflet() %>%
@@ -38,29 +51,18 @@ leaflet_map <- latest_data %>%
         urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
         attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>'
     ) %>%
-    addMarkers(
+    addAwesomeMarkers(
         ~Long,
         ~Lat,
         group = "covid-19",
-        # popup = popupTable(
-        #     data_sf,
-        #     zcol = c('Province/State', 'Country/Region', 'confirmed',
-        #              'current', 'death', 'recovered'))
+        label = ~`Country/Region`,
+        icon = ~popup_icons[icon_group]
     ) %>%
-    # addLogo(
-    #     "https://i.imgur.com/N3jsUbD.png",
-    #     url = 'https://i.imgur.com/N3jsUbD.png',
-    #     position = "bottomleft",
-    #     offset.x = 5,
-    #     offset.y = 40,
-    #     width = 100,
-    #     height = 100
-    # ) %>%
     addPopupGraphs(popup_plots, group = 'covid-19') %>%
     addFullscreenControl(position = "topleft") %>%
-    addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
+    leafem::addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
     setView(lng = 0, lat = 40, zoom = 2)
-
+leaflet_map
 htmlwidgets::saveWidget(
     leaflet_map,
     here::here(

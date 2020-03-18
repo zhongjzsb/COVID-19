@@ -46,4 +46,4 @@ The data source is from [JHU CSSE](https://github.com/CSSEGISandData/COVID-19) (
 
 ## Licence
 
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
