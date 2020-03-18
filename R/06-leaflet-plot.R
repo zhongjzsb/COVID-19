@@ -65,7 +65,7 @@ leaflet_map <- latest_data %>%
     addFullscreenControl(position = "topleft") %>%
     leafem::addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
     setView(lng = 0, lat = 40, zoom = 2)
-leaflet_map
+
 htmlwidgets::saveWidget(
     leaflet_map,
     here::here(
