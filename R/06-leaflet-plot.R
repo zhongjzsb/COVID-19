@@ -22,7 +22,7 @@ for (i_row in c(1:nrow(latest_data))) {
     ]) + geom_col(aes(x = Date, y = Num, fill=Type)) +
         labs(title = paste0(
             i_record$`Country/Region`, '   ---', i_record$`Province/State`, '\n',
-            sprintf("#Confirmed: %s   ", i_record$confirmed), 
+            sprintf("#Confirmed: %s   ", i_record$confirmed),
             sprintf("#Current: %s", i_record$current), '\n',
             sprintf("#Death: %s   ", i_record$death),
             sprintf("#Recovered: %s", i_record$recovered)
@@ -38,33 +38,33 @@ leaflet_map <- latest_data %>%
         attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>'
     ) %>%
     addMarkers(
-        ~Long, 
-        ~Lat, 
+        ~Long,
+        ~Lat,
         group = "covid-19",
         # popup = popupTable(
         #     data_sf,
-        #     zcol = c('Province/State', 'Country/Region', 'confirmed', 
+        #     zcol = c('Province/State', 'Country/Region', 'confirmed',
         #              'current', 'death', 'recovered'))
     ) %>%
-    addLogo(
-        "https://i.imgur.com/N3jsUbD.png", 
-        url = 'https://i.imgur.com/N3jsUbD.png',
-        position = "bottomleft",
-        offset.x = 5,
-        offset.y = 40,
-        width = 100,
-        height = 100
-    ) %>% 
+    # addLogo(
+    #     "https://i.imgur.com/N3jsUbD.png",
+    #     url = 'https://i.imgur.com/N3jsUbD.png',
+    #     position = "bottomleft",
+    #     offset.x = 5,
+    #     offset.y = 40,
+    #     width = 100,
+    #     height = 100
+    # ) %>%
     addPopupGraphs(popup_plots, group = 'covid-19') %>%
     addFullscreenControl(position = "topleft") %>%
     addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
-    setView(lng = 0, lat = 40, zoom = 2) 
+    setView(lng = 0, lat = 40, zoom = 2)
 
 htmlwidgets::saveWidget(
-    leaflet_map,     
+    leaflet_map,
     here::here(
         "static",
-        "images", 
+        "images",
         'leaflet-plot.html'),
     selfcontained = FALSE,
     libdir = 'r_js')
