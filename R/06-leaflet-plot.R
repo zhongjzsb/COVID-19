@@ -22,6 +22,7 @@ for (i_row in c(1:nrow(latest_data))) {
     ]) + geom_col(aes(x = Date, y = Num, fill=Type)) +
         labs(title = paste0(
             i_record$`Country/Region`, '   ---', i_record$`Province/State`, '\n',
+            sprintf("Date: %s", i_record$Date), '\n',
             sprintf("#Confirmed: %s   ", i_record$confirmed),
             sprintf("#Current: %s", i_record$current), '\n',
             sprintf("#Death: %s   ", i_record$death),
