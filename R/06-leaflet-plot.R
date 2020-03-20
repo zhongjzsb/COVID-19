@@ -55,7 +55,12 @@ latest_data[, `:=`(
         latest_data$current, 
         breaks=c(-1, 10, 100, 1000, 10000, 1000000), 
         labels=c('1-10', '11-100', '101-1000', '1001-10000', '10000-')),
-    region_label=paste0(`Country/Region`, ', ', `Province/State`)
+    region_label=paste0(
+        `Country/Region`, ', ', `Province/State`, 
+        ' <br> #Current: ', current,
+        ' <br> #Death: ', death,
+        ' <br> #Recovered: ', recovered
+    )
 )]
 
 popup_plots <- list()
@@ -90,7 +95,7 @@ leaflet_map <- latest_data %>%
         ~Long,
         ~Lat,
         group = "covid-19",
-        label = ~region_label,
+        label = ~lapply(latest_data$region_label, htmltools::HTML),
         icon = ~popup_icons[icon_group]
     ) %>%
     addPopupGraphs(popup_plots, group = 'covid-19', width = 300, height = 300) %>%
@@ -98,7 +103,7 @@ leaflet_map <- latest_data %>%
     addControl(html = markerLegendHTML(popup_icons), position = "bottomright") %>%
     leafem::addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
     setView(lng = 0, lat = 40, zoom = 4) %>%
-    setMaxBounds(lng1 = -180, lat1 = -70, lng2 = 180, lat2 = 70)
+    setMaxBounds(lng1 = -200, lat1 = -90, lng2 = 200, lat2 = 90)
 
 htmlwidgets::saveWidget(
     leaflet_map,
