@@ -51,7 +51,6 @@ htmlwidgets::saveWidget(
         "static",
         "images",
         'covid-19-DT-mobile.html'),
-    title = 'Zhongjzsb\'s COVID-19 Leaflet Plot',
     selfcontained = FALSE,
     libdir = 'r_js')
 
