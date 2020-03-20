@@ -1,0 +1,11 @@
+---
+title: "Leaflet plot for COVID-19"
+author: "Jingyu Bao"
+date: "3/20/2020"
+output: html_document
+---
+
+Code is save in [github](https://github.com/zhongjzsb/COVID-19) and the map can also be accessed from [html](https://zhongjzsb.com/images/leaflet-plot.html). Click following picture to redirect.
+
+[![leaflet_map](../static/images/leaflet-screenshot.png)](https://zhongjzsb.com/images/leaflet-plot.html)
+

@@ -113,3 +113,4 @@ htmlwidgets::saveWidget(
         'leaflet-plot.html'),
     selfcontained = FALSE,
     libdir = 'r_js')
+

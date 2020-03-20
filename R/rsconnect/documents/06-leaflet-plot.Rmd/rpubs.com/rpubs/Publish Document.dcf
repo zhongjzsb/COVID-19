@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/587269/96034927c8984c2b8547f57658f25712
+bundleId: https://api.rpubs.com/api/v1/document/587269/96034927c8984c2b8547f57658f25712
+url: http://rpubs.com/zhongjzsb/587269
+when: 1584733672.21144
