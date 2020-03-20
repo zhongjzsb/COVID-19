@@ -12,7 +12,7 @@ library(raster)
 # Ref: https://stackoverflow.com/questions/47064921/leaflet-legend-for-addawesomemarkers-function-with-icons
 markerLegendHTML <- function(IconSet) {
     # container div:
-    legendHtml <- "<div style='padding: 10px; padding-bottom: 10px;'><h4 style='padding-top:0; padding-bottom:10px; margin: 0;'> Levels </h4>"
+    legendHtml <- "<div style='padding: 10px; padding-bottom: 10px;'><h4 style='padding-top:0; padding-bottom:10px; margin: 0;'> #Current </h4>"
     
     n <- 1
     # add each icon for font-awesome icons icons:
