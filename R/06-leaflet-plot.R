@@ -9,6 +9,7 @@ library(leafem)
 library(leaflet.extras)
 library(raster)
 
+# Ref: https://stackoverflow.com/questions/47064921/leaflet-legend-for-addawesomemarkers-function-with-icons
 markerLegendHTML <- function(IconSet) {
     # container div:
     legendHtml <- "<div style='padding: 10px; padding-bottom: 10px;'><h4 style='padding-top:0; padding-bottom:10px; margin: 0;'> Levels </h4>"
@@ -93,7 +94,7 @@ leaflet_map <- latest_data %>%
     ) %>%
     addPopupGraphs(popup_plots, group = 'covid-19', width = 300, height = 300) %>%
     addFullscreenControl(position = "topleft") %>%
-    addControl(html = markerLegendHTML(popup_icons), position = "bottomleft") %>%
+    addControl(html = markerLegendHTML(popup_icons), position = "bottomright") %>%
     leafem::addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
     setView(lng = 0, lat = 40, zoom = 4)
 
