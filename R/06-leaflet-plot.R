@@ -14,7 +14,8 @@ popup_icons <- awesomeIconList(
     lvl1 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'lightblue'),
     lvl2 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'orange'),
     lvl3 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'red'),
-    lvl4 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black')
+    lvl4 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black'),
+    lvl5 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black', iconColor = 'darkred')
 )
 
 wide_data <- dcast(data, ...~Type, value.var = 'Num')
@@ -22,8 +23,8 @@ latest_data <- wide_data[Date==max(Date) & confirmed!=0]
 latest_data[, `:=`(
     icon_group=cut(
         latest_data$current, 
-        breaks=c(-1, 10, 100, 1000, 1000000), 
-        labels=c('lvl1', 'lvl2', 'lvl3', 'lvl4')),
+        breaks=c(-1, 10, 100, 1000, 10000, 1000000), 
+        labels=c('lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5')),
     region_label=paste0(`Country/Region`, ', ', `Province/State`)
 )]
 
@@ -61,10 +62,10 @@ leaflet_map <- latest_data %>%
         label = ~region_label,
         icon = ~popup_icons[icon_group]
     ) %>%
-    addPopupGraphs(popup_plots, group = 'covid-19') %>%
+    addPopupGraphs(popup_plots, group = 'covid-19', width = 300, height = 300) %>%
     addFullscreenControl(position = "topleft") %>%
     leafem::addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
-    setView(lng = 0, lat = 40, zoom = 2)
+    setView(lng = 0, lat = 40, zoom = 4)
 
 htmlwidgets::saveWidget(
     leaflet_map,

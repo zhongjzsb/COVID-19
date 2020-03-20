@@ -2,11 +2,11 @@
 
 Visualizing and modeling the COVID-19 is the main objective here. 
 
-I'm trying to use R to implement this idea. The initial idea was to create an animated map with dots. I generalized the code in order to plot multi countries if we have the detailed location data of the cases. You can find my post [here](https://zhongjzsb.com/posts/baobao-posts/covid-19/). It includes some other types of plots, such ggplotly and shiny app.
+I'm trying to use R to implement this idea. The initial idea was to create an animated map with dots. I generalized the code in order to plot multi countries if we have the detailed location data of the cases. You can find my post [here](https://zhongjzsb.com/posts/baobao-posts/covid-19-visualization/). It includes some other types of plots, such ggplotly and shiny app.
 
 **leaflet map**
 
-[![leaflet_map](./static/images/leaflet-screenshot.png)](https://zhongjzsb.com/posts/baobao-posts/covid-19-visualization/)
+[![leaflet_map](./static/images/leaflet-screenshot.png)](./static/images/leaflet-plot.html)
 
 Here are the plots for China, US and the entire world.
 
