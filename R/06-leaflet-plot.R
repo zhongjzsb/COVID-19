@@ -9,13 +9,42 @@ library(leafem)
 library(leaflet.extras)
 library(raster)
 
+markerLegendHTML <- function(IconSet) {
+    # container div:
+    legendHtml <- "<div style='padding: 10px; padding-bottom: 10px;'><h4 style='padding-top:0; padding-bottom:10px; margin: 0;'> Levels </h4>"
+    
+    n <- 1
+    # add each icon for font-awesome icons icons:
+    for (Icon in IconSet) {
+        if (Icon[["library"]] == "glyphicon") {
+            legendHtml<- paste0(
+                legendHtml, 
+                "<div style='width: auto; height: 45px'>",
+                "<div style='position: relative; display: inline-block; width: 36px; height: 45px' class='awesome-marker awesome-marker-icon-",
+                Icon[["markerColor"]],
+                "'>",
+                "<i style='margin-left: 4px; margin-top: 11px; color: ",
+                Icon[["iconColor"]],
+                "' class= 'glyphicon glyphicon-",
+                Icon[["icon"]],
+                "'></i>",
+                "</div>",
+                "<p style='position: relative; top: 10px; left: 2px; display: inline-block; ' >", 
+                names(IconSet)[n] ,
+                "</p>",
+                "</div>")    
+        }
+        n<- n + 1
+    }
+    paste0(legendHtml, "</div>")
+}
 
 popup_icons <- awesomeIconList(
-    lvl1 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'lightblue'),
-    lvl2 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'orange'),
-    lvl3 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'red'),
-    lvl4 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black'),
-    lvl5 = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black', iconColor = 'darkred')
+    '1-10' = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'lightblue'),
+    '11-100' = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'orange'),
+    '101-1000' = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'red'),
+    '1001-10000' = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black'),
+    '10000-' = makeAwesomeIcon(icon='stats', library='glyphicon', markerColor = 'black', iconColor = 'darkred')
 )
 
 wide_data <- dcast(data, ...~Type, value.var = 'Num')
@@ -24,7 +53,7 @@ latest_data[, `:=`(
     icon_group=cut(
         latest_data$current, 
         breaks=c(-1, 10, 100, 1000, 10000, 1000000), 
-        labels=c('lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5')),
+        labels=c('1-10', '11-100', '101-1000', '1001-10000', '10000-')),
     region_label=paste0(`Country/Region`, ', ', `Province/State`)
 )]
 
@@ -64,6 +93,7 @@ leaflet_map <- latest_data %>%
     ) %>%
     addPopupGraphs(popup_plots, group = 'covid-19', width = 300, height = 300) %>%
     addFullscreenControl(position = "topleft") %>%
+    addControl(html = markerLegendHTML(popup_icons), position = "bottomleft") %>%
     leafem::addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
     setView(lng = 0, lat = 40, zoom = 4)
 
