@@ -80,10 +80,11 @@ for (i_row in c(1:nrow(latest_data))) {
 
 # Create the map
 leaflet_map <- latest_data %>%
-    leaflet() %>%
+    leaflet(options = leafletOptions(minZoom = 2, maxZoom = 8)) %>%
     addTiles(
         urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
-        attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>'
+        attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>',
+        options = providerTileOptions(noWrap = TRUE)
     ) %>%
     addAwesomeMarkers(
         ~Long,
@@ -96,7 +97,8 @@ leaflet_map <- latest_data %>%
     addFullscreenControl(position = "topleft") %>%
     addControl(html = markerLegendHTML(popup_icons), position = "bottomright") %>%
     leafem::addHomeButton(extent(c(-130, 130, -50, 50)), 'Home', position = 'topleft') %>%
-    setView(lng = 0, lat = 40, zoom = 4)
+    setView(lng = 0, lat = 40, zoom = 4) %>%
+    setMaxBounds(lng1 = -180, lat1 = -70, lng2 = 180, lat2 = 70)
 
 htmlwidgets::saveWidget(
     leaflet_map,
