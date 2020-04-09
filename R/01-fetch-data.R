@@ -13,9 +13,12 @@ site_link <- paste0("https://raw.githubusercontent.com/",
     "master/csse_covid_19_data/",
     "csse_covid_19_time_series/"
 )
-confirmed_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Confirmed.csv")))
-recovered_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Recovered.csv")))
-death_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Deaths.csv")))
+# confirmed_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Confirmed.csv")))
+# recovered_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Recovered.csv")))
+# death_data <- fread(getURL(paste0(site_link, "time_series_19-covid-Deaths.csv")))
+confirmed_data <- fread(getURL(paste0(site_link, "time_series_covid19_confirmed_global.csv")))
+recovered_data <- fread(getURL(paste0(site_link, "time_series_covid19_recovered_global.csv")))
+death_data <- fread(getURL(paste0(site_link, "time_series_covid19_deaths_global.csv")))
 
 # remove columns with NA's
 confirmed_data <- confirmed_data[
@@ -77,9 +80,13 @@ current[, `:=`(
 setnames(current, 'current', 'Num')
 
 data <- rbindlist(list(data, current), fill = TRUE)
+data <- data[!is.na(Num) & `Province/State`!='Recovered']
 
 # country-wise data
 country_data <- data[, .(Num=sum(Num)), by=.(Type, `Country/Region`, Date)]
 
-# saveRDS(data, './data/data.RDS')
+saveRDS(data, here::here(
+    "static",
+    "images",
+    'covid-19-data.RDS'))
 # fwrite(data, './data/data.csv')

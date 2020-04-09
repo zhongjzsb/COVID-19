@@ -16,7 +16,7 @@ library(stringr)
 plot_breaks <- c(1, 10, 100, 1000, 10000)
 plot_labels <- c('1', '10', '100', '1000', '10000')
 
-plot_regions <- c('china', 'world', 'us')
+plot_regions <- c('china', 'world')
 plot_types <- c('confirmed', 'current')
 plot_titles <- c(
     'Number of Cumulative Confirmed Cases',
@@ -93,7 +93,7 @@ for (i_plot in c(1:dim(plot_matrix)[1])) {
         transition_time(Date) +
         labs(title = paste0(plot_title, ' on {frame_time}'))
 
-    animate <- animate(
+    animate <- gganimate::animate(
         p_ggplot,
         width = 1600,
         height = 900,

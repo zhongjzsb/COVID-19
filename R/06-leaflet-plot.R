@@ -50,6 +50,8 @@ popup_icons <- awesomeIconList(
 
 wide_data <- dcast(data, ...~Type, value.var = 'Num')
 latest_data <- wide_data[Date==max(Date) & confirmed!=0]
+latest_data[is.na(recovered), recovered := 0]
+latest_data[is.na(current), current := confirmed]
 latest_data[, `:=`(
     icon_group=cut(
         latest_data$current, 
@@ -115,3 +117,9 @@ htmlwidgets::saveWidget(
     selfcontained = FALSE,
     libdir = 'r_js')
 
+saveRDS(
+    leaflet_map,
+    here::here(
+        "static",
+        "images",
+        'leaflet-plot.RDS'))

@@ -54,6 +54,12 @@ htmlwidgets::saveWidget(
     selfcontained = FALSE,
     libdir = 'r_js')
 
+saveRDS(
+    latest_data_DT,
+    here::here(
+        "static",
+        "images",
+        'covid-19-DT.RDS'))
 # writeLines(format_table(latest_data[1:20], format = 'html'),
 #            here::here(
 #                "static",

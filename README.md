@@ -1,6 +1,6 @@
 # COVID-19
 
-Visualizing and modeling the COVID-19 is the main objective here. 
+Visualizing and modeling the COVID-19 is the main objective here.
 
 I'm trying to use R to implement this idea. The initial idea was to create an animated map with dots. I generalized the code in order to plot multi countries if we have the detailed location data of the cases. You can find my post [here](https://zhongjzsb.com/posts/baobao-posts/covid-19-visualization/). It includes some other types of plots, such ggplotly and shiny app.
 
@@ -8,11 +8,11 @@ I'm trying to use R to implement this idea. The initial idea was to create an an
 
 [![leaflet_map](./static/images/leaflet-screenshot.png)](https://zhongjzsb.com/images/leaflet-plot.html)
 
-Here are the plots for China, US and the entire world.
+Here are the plots for China and the entire world. I removed US plots as the data format keeps changing.
 
 ![animate_china](./static/images/china_confirmed.gif)
 
-![animate_us](./static/images/us_confirmed.gif)
+<!-- ![animate_us](./static/images/us_confirmed.gif) -->
 
 ![animate_world](./static/images/world_confirmed.gif)
 
@@ -20,7 +20,7 @@ Here are the plots for China, US and the entire world.
 
 ![animate_world](./static/images/world_current.gif)
 
-![animate_us](./static/images/us_current.gif)
+<!-- ![animate_us](./static/images/us_current.gif) -->
 
 
 ## Alternative plot
