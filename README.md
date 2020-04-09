@@ -4,9 +4,17 @@ Visualizing and modeling the COVID-19 is the main objective here.
 
 I'm trying to use R to implement this idea. The initial idea was to create an animated map with dots. I generalized the code in order to plot multi countries if we have the detailed location data of the cases. You can find my post [here](https://zhongjzsb.com/posts/baobao-posts/covid-19-visualization/). It includes some other types of plots, such ggplotly and shiny app.
 
-**leaflet map**
+## Shiny Flexdashboard
+
+I created a **shiny flexdashboard** [here](https://app.zhongjzsb.com/COVID-19-dashboard/).
+
+[![covid-19-dashboard](https://raw.githubusercontent.com/zhongjzsb/COVID-19-dashboard/master/flexdashboard-screenshot.png)](https://app.zhongjzsb.com/COVID-19-dashboard/)
+
+## Leaflet Map
 
 [![leaflet_map](./static/images/leaflet-screenshot.png)](https://zhongjzsb.com/images/leaflet-plot.html)
+
+## Animate Plots
 
 Here are the plots for China and the entire world. I removed US plots as the data format keeps changing.
 
@@ -33,7 +41,7 @@ I come into this [github](https://github.com/globalcitizen/2019-wuhan-coronaviru
 ## Todo:
 
 1. [ ] Modelling the data with SIR.
-2. [ ] Shiny app update.
+2. [X] Shiny app update.
 
 ## Acknowledgement
 
