@@ -60,16 +60,16 @@ confirmed[, Type:='confirmed']
 recovered[, Type:='recovered']
 death[, Type:='death']
 
-total_data <- rbindlist(list(confirmed, recovered, death), fill = TRUE)
-total_data[is.na(Num), Num:=0]
-total_data[, Date:=mdy(Date)]
+data <- rbindlist(list(confirmed, recovered, death), fill = TRUE)
+data[is.na(Num), Num:=0]
+data[, Date:=mdy(Date)]
 
-total_data[`Country/Region`=='Taiwan*', `Province/State`:='Taiwan']
-total_data[`Country/Region` %in% c('Mainland China', 'Taiwan*'), `Country/Region`:='China']
-total_data[`Province/State` %in% c('Hong Kong', 'Macau'), `Country/Region`:='China']
+data[`Country/Region`=='Taiwan*', `Province/State`:='Taiwan']
+data[`Country/Region` %in% c('Mainland China', 'Taiwan*'), `Country/Region`:='China']
+data[`Province/State` %in% c('Hong Kong', 'Macau'), `Country/Region`:='China']
 
 # calculate current case: confirmed - death - recovered
-current <- dcast(total_data, ...~Type, value.var = 'Num')
+current <- dcast(data, ...~Type, value.var = 'Num')
 current[is.na(confirmed), confirmed := 0]
 current[is.na(death), death := 0]
 current[is.na(recovered), recovered := 0]
@@ -78,7 +78,7 @@ current[, `:=`(
     Type='current'
 )]
 
-data <- melt(current, id=1:5, measure=6:9, variable.name = 'Type', value.name = 'Num', variable.factor=FALSE)
+data <- melt(current, id=1:5, measure=6:9, variable.name = 'Type', value.name = 'Num')
 data <- data[!is.na(Num) & !(`Province/State` %in% c("Recovered", "Diamond Princess"))]
 
 # country-wise data

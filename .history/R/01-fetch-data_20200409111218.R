@@ -78,7 +78,7 @@ current[, `:=`(
     Type='current'
 )]
 
-data <- melt(current, id=1:5, measure=6:9, variable.name = 'Type', value.name = 'Num', variable.factor=FALSE)
+data <- melt(current, id=1:5, measure=6:9, variable.name = 'Type', value.name = 'Num')
 data <- data[!is.na(Num) & !(`Province/State` %in% c("Recovered", "Diamond Princess"))]
 
 # country-wise data

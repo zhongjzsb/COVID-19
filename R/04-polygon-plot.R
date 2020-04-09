@@ -52,7 +52,7 @@ china_polygon <- ggplot() +
         legend.text=element_text(size = 20),
     ) +
     labs(title = 'Number of Cumulative Confirmed Case on {frame_time}', fill = 'Confirmed')
-china_polygon_animate <- animate(
+china_polygon_animate <- gganimate::animate(
     china_polygon, 
     width = 2000,
     height = 1500,

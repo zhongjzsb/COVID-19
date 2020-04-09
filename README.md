@@ -45,7 +45,9 @@ I come into this [github](https://github.com/globalcitizen/2019-wuhan-coronaviru
 
 ## Acknowledgement
 
-The data source is from [JHU CSSE](https://github.com/CSSEGISandData/COVID-19) (Old website is [JHU nCov](https://systems.jhu.edu/research/public-health/ncov/)).
+- The data source is from [JHU CSSE](https://github.com/CSSEGISandData/COVID-19) (Old website is [JHU nCov](https://systems.jhu.edu/research/public-health/ncov/)).
+- **Some countries didn't report recovered cases, like Canada. I fill it as 0.**
+- I changed the *Country/Region* to China for Hong Kong, Macau and Taiwan in the github plots, but not in the [**shiny flexdashboard**](https://app.zhongjzsb.com/COVID-19-dashboard/).
 
 ## References:
 - [JHU CSSE](https://systems.jhu.edu/research/public-health/ncov/)
