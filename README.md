@@ -12,7 +12,7 @@ I created a **shiny flexdashboard** [here](https://app.zhongjzsb.com/COVID-19-da
 
 ## Leaflet Map
 
-[![leaflet_map](https://app.zhongjzsb.com/COVID-19/static/images/leaflet-plot.html)
+[![leaflet_map](./static/images/leaflet-screenshot.png)](https://app.zhongjzsb.com/COVID-19/static/images/leaflet-plot.html)
 
 ## Animate Plots
 
